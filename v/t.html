@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>  
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- load MUI -->
+    <link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="../js/mui.min.js"></script>  
+	<link href="../css/materialize.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+    <script src="../js/materialize.min.js"></script>
+	
+   <style>
+   @import url(https://fonts.googleapis.com/css?family=Poppins);
+   </style>
+   <script src="https://unpkg.com/ionicons@4.4.1/dist/ionicons.js"></script>
+ 
+<script src="../js/jquery.min.js"></script>
+
+
+   
+  </head>
+  <body onload="">
+  <div id='blocker'></div>
+  <div class="mui-appbar" id="header1" style='background-color:grey'>
+  <table width="100%">
+    <tr style="vertical-align:middle;">
+      <td  class="mui--appbar-height" style='font-size:18px;font-family:Poppins;'><ion-icon name="basket" style="margin-left:9px;margin-right:3px;font-size:20px;"></ion-icon><span id='apptitle'>Order Info</span></td>
+     </tr>
+  </table>
+</div>
+
+<!-- Main Content -->
+<div id='' style='width:100%;height:400px;background-color:'>
+<center><img src='https://image.flaticon.com/icons/svg/291/291201.svg' style='width:20%;height:auto;margin-top:60px;' /><h5 id='txtdemo' style='font-family:Poppins;font-size:17px;color:#212121'>Your order was placed successfully.</h5><p style='color:grey'>Notify seller about your order for faster processing.</p></center>
+
+<center>
+<a onclick='notify();'>  <button class="mui-btn  mui-btn--large  mui-btn--primary mui-btn--raised" style='background-color:teal'>Notify on Whatsapp</button></a><p>• Recommended • </p>
+<div class="mui-divider" style='margin-top:40px'></div>
+<br>
+<button style="background-color:#f0f0f0;color:#212121" class="mui-btn mui-btn--primary" onclick='goBack()'>Go Back</button></p>
+</center>
+
+</div>
+
+
+<script>
+var LS = {
+    get : function( id ) {
+        var item = localStorage.getItem( id );
+        if(item){
+          return item.charAt(0)=='{' ? JSON.parse(item) : item;
+        }else{
+          return {}; 
+        }
+    },	
+    set : function( id, key ) {
+        var k = typeof key=="object" ? JSON.stringify( key ) : key;
+        console.log( k );
+        return localStorage.setItem( id, k );
+    },
+    del : function( id ){
+        return localStorage.removeItem( id );
+    }
+};
+
+
+var oU = LS.get('oUser'); // should be a stored Obj
+
+if(!oU.name){
+  oU.date = new Date().toUTCString();
+  LS.set('oUser', oU); // Store back the whole object
+}else{
+  var msgDis = document.getElementById('msgDisplay');
+  msgDis.innerHTML = "Hi " + oU.name + " Welcome back!" + " Date: " + oU.date;  
+}
+
+  document.write("<script src='../air/info.js'></"+"script>"); 
+
+
+/*
+LS.del('oUser');*/
+function notify() {
+	window.open("https://api.whatsapp.com/send?phone="+ uwano + "&text=I just ordered on your store. Did you receive it?" , "url")
+}
+
+function goBack() {
+    window.history.back();
+}
+</script>
+
+
+ </body>
+</html>

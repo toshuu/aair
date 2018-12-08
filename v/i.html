@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+  <head>  
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- load MUI -->
+    <link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="../js/mui.min.js"></script>  
+	<link href="../css/materialize.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+    <script src="../js/materialize.min.js"></script>
+	
+   <style>
+   @import url(https://fonts.googleapis.com/css?family=Poppins);
+   </style>
+   <script src="https://unpkg.com/ionicons@4.4.1/dist/ionicons.js"></script>
+ 
+<script src="../js/jquery.min.js"></script>
+
+  <script>
+   function init(){
+   oU.mui1 = document.getElementById("mui1").value;
+   oU.mui2 = document.getElementById("mui2").value;
+   oU.txt = document.getElementById("txt").value;
+   oU.base = document.getElementById("base").value;
+   oU.pac = document.getElementById("pac").value;
+ 
+   oU.sac = document.getElementById("sac").value;
+   oU.target = document.getElementById("target").value;
+   oU.pactxt = document.getElementById("pactxt").value;
+   oU.targeticons = document.getElementById("targeticons").value;
+   oU.targettxt = document.getElementById("targettxt").value;
+      
+   oU.cat1 =  document.getElementById("cat1").value;
+   oU.cat2 =  document.getElementById("cat2").value;
+   oU.cat3 =  document.getElementById("cat3").value;
+   oU.cat4 =  document.getElementById("cat4").value;
+   oU.theme =  '?base=' + oU.base + '&txt=' + oU.txt + '&pac=' + oU.pac + '&sac=' + oU.sac + '&target=' + oU.target + '&pactxt=' + oU.pactxt + '&targeticons=' + oU.targeticons + '&targettxt=' + oU.targettxt ;
+	 oU.cats = '&cat1=' + oU.cat1 + '&cat2=' + oU.cat2 + '&cat3=' + oU.cat3 + '&cat4=' + oU.cat4 ;
+	 
+   LS.set('oUser', oU);
+   document.getElementById("opt1").innerHTML = oU.cat1;
+   document.getElementById("opt2").innerHTML = oU.cat2;
+   document.getElementById("opt3").innerHTML = oU.cat3;
+   document.getElementById("opt4").innerHTML = oU.cat4;
+   document.getElementById("apptitle").innerHTML = '<span style="margin-left:7px;">'+apptitle+'</span>';
+   document.body.style.backgroundColor = '#'+oU.base;
+   document.body.style.color = '#'+oU.txt;
+    document.getElementById("txtdemo").style.color = '#'+oU.txt;
+    document.getElementById("block1").style.backgroundColor = '#'+oU.target;
+    document.getElementById("block2").style.backgroundColor = '#'+oU.target;
+    document.getElementById("block3").style.backgroundColor = '#'+oU.target;   
+    document.getElementById("block4").style.backgroundColor = '#'+oU.target;
+	document.getElementById("text1").value = document.getElementById("cat1").value;
+	document.getElementById("text2").value = document.getElementById("cat2").value;
+	document.getElementById("text3").value = document.getElementById("cat3").value;
+	document.getElementById("text4").value = document.getElementById("cat4").value;
+    
+   document.getElementById("header1").style.backgroundColor = '#'+oU.pac; 
+   document.getElementById("header1").style.color = '#'+oU.pactxt; 
+   document.getElementById("text1").style.color = '#'+oU.targettxt;
+   document.getElementById("text2").style.color = '#'+oU.targettxt;
+   document.getElementById("text3").style.color = '#'+oU.targettxt;
+   document.getElementById("text4").style.color = '#'+oU.targettxt;
+   document.getElementById("icon1").style.color = '#'+oU.targeticons;
+   document.getElementById("icon2").style.color = '#'+oU.targeticons;
+   document.getElementById("icon3").style.color = '#'+oU.targeticons;
+   document.getElementById("icon4").style.color = '#'+oU.targeticons;
+   document.getElementById("block1").style.color = '#'+oU.pactxt;
+   document.getElementById("block2").style.color = '#'+oU.pactxt;
+   document.getElementById("block3").style.color = '#'+oU.pactxt;
+   document.getElementById("block4").style.color = '#'+oU.pactxt;
+   document.getElementById("header2").style.backgroundColor = '#'+oU.sac;
+   document.getElementById("btns").style.color = '#'+oU.target;
+   document.getElementById("header1").style.color = '#'+oU.pactxt;
+ document.getElementById("blocker").innerHTML=ublock;
+   }
+   </script>
+   
+   
+
+   
+  </head>
+  <body onload="init();hey()">
+  <div id='blocker'></div>
+  <div class="mui-appbar" id="header1" style='background-color:grey'>
+  <table width="100%">
+    <tr style="vertical-align:middle;">
+      <td  class="mui--appbar-height" style='font-size:18px;font-family:Poppins;'><ion-icon name="basket" style="margin-left:9px;margin-right:3px;font-size:24px;"></ion-icon><span id='apptitle'>App Title</span></td>
+      <td class="mui--appbar-height" align="right" style='font-size:24px;font-family:Poppins;' onclick='opener()'><ion-icon name="search" style="margin-right:-6px;margin-top:6px;"></ion-icon></td>
+    </tr>
+  </table>
+</div>
+<div class="mui-dropdown" style='width:100%'>
+  <button class="mui-btn mui-btn--primary" data-mui-toggle="dropdown" id="header2" style='width:100%;padding:0px;margin:0px;border-radius:-0px;height:40px;background-color:grey'>
+    categories
+    <span class="mui-caret"></span>
+  </button>
+  <ul id='toptions'  class="mui-dropdown__menu"  style='width:100%;'>
+    <li><a id='opt1' onclick='oU.open=oU.cat1;LS.set("oUser", oU);opennow();'  href="#">Option 1</a></li>
+    <li><a id='opt2' onclick='oU.open=oU.cat2;LS.set("oUser", oU);opennow();' href="#">Option 2</a></li>
+    <li><a id='opt3' onclick='oU.open=oU.cat3;LS.set("oUser", oU);opennow();' href="#">Option 3</a></li>
+    <li><a id='opt4' onclick='oU.open=oU.cat4;LS.set("oUser", oU);opennow();' href="#">Option 4</a></li>
+  </ul>
+</div>  
+
+
+<!-- Main Content -->
+<div id='' style='width:100%;height:400px;background-color:'>
+<center><img src='../img/start.webp' style='width:50%;height:auto;margin-top:60px;' /><h5 id='txtdemo' style='font-family:Poppins;font-size:17px;color:grey'>Select any category to begin with.</h5></center>
+
+<div class="mui-container-fluid " style='position:absolute;margin-left:auto;margin-right:auto;left:22px;right:0px;'>
+  <div class="mui-row " style='color:black'><br>
+    <div  onclick='oU.open=oU.cat1;LS.set("oUser", oU);opennow();' class="mui-col-xs-6 waves-effect waves-light" id='block1' style='background-color:#f0f0f0;border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon1" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input  id='text1' style='font-family:poppins;background-color:transparent;border:0px;' disabled>  </div>
+    <div onclick='oU.open=oU.cat2;LS.set("oUser", oU);opennow();' class="mui-col-xs-6 " id='block2' style='background-color:#f0f0f0;border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon2" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input id='text2' style='font-family:poppins;background-color:transparent;border:0px;' disabled></div>     
+
+	<div onclick='oU.open=oU.cat3;LS.set("oUser", oU);opennow();' class="mui-col-xs-6" id='block3' style='background-color:#f0f0f0;border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon3" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input id='text3' style='font-family:poppins;background-color:transparent;border:0px;' disabled></div>
+    <div onclick='oU.open=oU.cat4;LS.set("oUser", oU);opennow();' class="mui-col-xs-6" id='block4' style='background-color:#f0f0f0;border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon4" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input id='text4' style='font-family:poppins;background-color:transparent;border:0px;' disabled></div>  
+  </div>
+</div>
+
+<form name="myform" style='display:none'>
+<input type="text" name="mui1" id="mui1" >
+<input type="text" name="mui2" id="mui2">
+
+<input type="text" name="cat1" id="cat1">
+<input type="text" name="cat2" id="cat2">
+<input type="text" name="cat3" id="cat3">
+<input type="text" name="cat4" id="cat4">
+
+<input type="text" id="txt">
+<input type="text" id="base">
+<input type="text" id="pac">
+<input type="text" id="sac">
+<input type="text" id="target">
+<input type="text" id="pactxt">
+<input type="text" id="targettxt">
+<input type="text" id="targeticons">
+</form>
+</div>
+
+
+
+<script type="text/javascript">
+var idx = document.getElementById("id");
+var data=location.search;
+if(data) {
+    data=location.search.substring(1); // remove the '?'
+    data=data.split('&');
+    var pairs={};
+    for(var i=0; i<data.length; i++){
+        var tmp=data[i].split('=');
+        pairs[tmp[0]]=tmp[1];
+    	}
+    var f = document.myform;
+    for (var i in pairs) {
+        if(f.elements[i]) {f.elements[i].value = pairs[i];}
+        }
+    }
+	
+	
+	function opennow(){
+	location.href='o.html'+oU.theme+oU.cats+'&open='+oU.open;
+	}
+	
+	
+$(document).keyup(function (e) {
+    if ($("#searchterm:focus") && (e.keyCode === 13)) {
+      searchnow();
+	 
+	
+	
+    }
+ });
+ 
+ 
+function searchnow(){
+oU.open = document.getElementById("searchterm").value;
+LS.set('oUser', oU);
+location.href='o.html'+oU.theme+oU.cats+'&open='+oU.open;
+	
+}
+
+function opener() {
+    var x = document.getElementById("opener");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+	
+}
+</script>
+
+<div class=" animated fadeInDown"  style="display:none;overflow-x:hidden;animation-duration:0.4s;overflow-y:hidden;z-index:999999;position:fixed;top:00px;left:0px;background-color:#344955;width:100%;height:110px;" id="opener">
+<div class="holder"> <div class="barpdf">
+<img src="../img/back.png" style="width:32px;height:32px;position:fixed;left:20px;margin-top:18px;" onclick="opener()" >
+<p style="font-size:15px;font-family:mont;margin-left:79px;margin-top:23px;float:left;color:white;font-family:poppins">Search Products</p></div>
+<input id='searchterm' style='margin-left:78px;width:70%;color:white' placeholder='Search Here ..'>
+</div>
+
+<script>
+var LS = {
+    get : function( id ) {
+        var item = localStorage.getItem( id );
+        if(item){
+          return item.charAt(0)=='{' ? JSON.parse(item) : item;
+        }else{
+          return {}; 
+        }
+    },	
+    set : function( id, key ) {
+        var k = typeof key=="object" ? JSON.stringify( key ) : key;
+        console.log( k );
+        return localStorage.setItem( id, k );
+    },
+    del : function( id ){
+        return localStorage.removeItem( id );
+    }
+};
+
+
+var oU = LS.get('oUser'); // should be a stored Obj
+
+if(!oU.name){
+  oU.date = new Date().toUTCString();
+  LS.set('oUser', oU); // Store back the whole object
+}else{
+  var msgDis = document.getElementById('msgDisplay');
+  msgDis.innerHTML = "Hi " + oU.name + " Welcome back!" + " Date: " + oU.date;  
+}
+
+  document.write("<script src='../air/info.js'></"+"script>"); 
+
+
+/*
+LS.del('oUser');*/
+
+	 setTimeout(function(){var str = document.getElementById("toptions").innerHTML; var str2 =  document.getElementById("text1").value;
+	 var str3 =  document.getElementById("text2").value;var str4 =  document.getElementById("text3").value;var str5 =  document.getElementById("text4").value;
+    var res = str.replace(/%20/g, " ");
+    var res2 = str2.replace(/%20/g, " ");
+    var res3 = str3.replace(/%20/g, " ");
+    var res4 = str4.replace(/%20/g, " ");
+    var res5 = str5.replace(/%20/g, " ");
+    document.getElementById("toptions").innerHTML = res;document.getElementById("text1").value = res2;
+	document.getElementById("text2").value = res3;document.getElementById("text3").value = res4;document.getElementById("text4").value = res5;
+	}, 400);
+ 
+</script>
+
+
+ </body>
+</html>

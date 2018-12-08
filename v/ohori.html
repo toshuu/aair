@@ -1,0 +1,1014 @@
+
+<html>
+
+<head>
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Dashboard</title>
+
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript"  src="../js/materialize.min.js"></script>
+<script type="text/javascript"  src="../js/Chart.js"></script>
+<script type="text/javascript"  src="../js/jquery.min.js"></script>
+<script type="text/javascript"  src="../js/nprogress.js"></script>
+<link href="../css/ionicons.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/ionic.css">
+
+<link rel="stylesheet" type="text/css" href="../ext/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="../ext/whitelist.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="../css/nprogress.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="css/stylehoriz.css">
+<script>
+
+
+ // progressive-image.js
+if (window.addEventListener && window.requestAnimationFrame && document.getElementsByClassName) window.addEventListener('load', function() {
+
+  // start
+  var pItem = document.getElementsByClassName('progressive replace'), timer;
+
+  window.addEventListener('scroll', scroller, false);
+  window.addEventListener('resize', scroller, false);
+  inView();
+
+
+  // throttled scroll/resize
+  function scroller(e) {
+
+    timer = timer || setTimeout(function() {
+      timer = null;
+      requestAnimationFrame(inView);
+    }, 0);
+
+  }
+
+
+  // image in view?
+  function inView() {
+
+    var wT = window.pageYOffset, wB = wT + 1800 + window.innerHeight, cRect, pT, pB, p = 0;
+    while (p < pItem.length) {
+
+      cRect = pItem[p].getBoundingClientRect();
+      pT = wT + cRect.top;
+      pB = pT + cRect.height;
+
+      if (wT < pB && wB > pT) {
+        loadFullImage(pItem[p]);
+        pItem[p].classList.remove('replace');
+      }
+      else p++;
+
+    }
+
+  }
+
+
+  // replace with full image
+  function loadFullImage(item) {
+
+    if (!item || !item.href) return;
+
+    // load image
+    var img = new Image();
+    if (item.dataset) {
+      img.srcset = item.dataset.srcset || '';
+      img.sizes = item.dataset.sizes || '';
+    }
+    img.src = item.href;
+    img.className = 'reveal';
+    if (img.complete) addImg();
+    else img.onload = addImg;
+
+    // replace image
+    function addImg() {
+
+      // disable click
+      item.addEventListener('click', function(e) { e.preventDefault(); }, false);
+
+      // add full image
+      item.appendChild(img).addEventListener('animationend', function(e) {
+
+        // remove preview image
+        var pImg = item.querySelector && item.querySelector('img.preview');
+        if (pImg) {
+          e.target.alt = pImg.alt || '';
+          item.removeChild(pImg);
+          e.target.classList.remove('reveal');
+        }
+
+      });
+
+    }
+
+  }
+
+}, false);
+</script>
+
+
+<style>
+html,body
+{
+
+ background-color:#ddd;
+ overflow-x:hidden;
+
+.reveal
+ {
+   display:none
+}
+}
+
+@font-face {
+    font-family: mont;
+    src: url('../css/mont.ttf');
+}
+
+}
+p,h3,h4
+{
+font-family:mont;
+}
+
+
+img
+{
+width:100%;
+}
+
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 60px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 60px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 60px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 60px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+hr.style12 {
+	height: 6px;
+	background: url(../images/datex.png) repeat-x 0 0;
+    border: 0;
+}
+
+
+
+hr.style11 {
+	border-top: 1px dashed #8c8b8b;
+	border-bottom: 1px dashed #212121;
+}
+
+.card-image {
+ 
+  background: url(../img/product-loading.gif);
+	 background-repeat: no-repeat;
+	 background-size:cover
+}
+
+canvas { background-color : #2a2d36;color:white;
+}
+
+	ul,
+		li {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		a,
+		img {
+			display: block;
+		}
+
+		img {
+			border: 0;
+		}
+
+		img:not([src]) {
+			visibility: hidden;
+		}
+
+		/* Fixes Firefox anomaly during image load */
+		@-moz-document url-prefix() {
+			img:-moz-loading {
+				visibility: hidden;
+			}
+		}
+</style>
+<link rel="stylesheet" type="text/css" href="../css/stepsfood.css">
+<link rel="stylesheet" type="text/css" href="../css/styleblack.css">
+<link href="../css/roboto.css" rel="stylesheet">
+
+
+<script>
+var pkey = "1212";
+$(document).ready(function(){go3()});
+
+</script>
+
+</head>
+
+
+<body style='' onclick='goh()' onload="">
+
+<div style='width:100%;background-color:#02aeae;height:3.10px;position:fixed;top:0px;z-index:9999999' > </div>
+
+<div id='book'>
+
+
+ 
+  
+  
+
+
+
+
+
+<br/><br/>
+  <div class="row" style="padding:0px;margin-left:0px;">
+    <div class="col s12" style="padding:0px;margin-left:0px;margin-right:0px;width:100%">
+    
+
+	<ul class="tabs" style="position:fixed;top:0px;background-color:#02aeae;z-index:999999;">
+        <li id="prevtab" class="tab col s3" onclick="go3();" ><a class='waves-effect waves-dark' style="color:#fff;font-size:15.5px;">Home</a></li>
+		     <li  id="nexttab2"  onclick="gooffers();" class="tab col s3"><a  class='waves-effect waves-dark' style="color:#e5e5e5" >Offers</a></li>
+        <li id="nexttab"  onclick="godel(); " class="tab col s3"><a class='waves-effect waves-dark' style="color:#e5e5e5" >Search</a></li>
+   
+      </ul>
+	  
+	  
+	
+			
+	<br/>
+		
+		
+		
+	<div id='categories' style='margin-left:12px;display:none' class='animated fade'>
+		<div class="chip waves-effect waves-light animated fadeIn" style='background-color:#252627;color:white;animation-delay:.2s;' onclick=''>All Items</div>
+		<div class="chip waves-effect waves-light animated fadeIn" style='background-color:#252627;color:white;animation-delay:.3s;' onclick=''>Rockets</div>
+		<div class="chip waves-effect waves-light animated fadeIn" style='background-color:#252627;color:white;animation-delay:.4s;' onclick=''>Planes</div>
+		<div class="chip waves-effect waves-light animated fadeIn" style='background-color:#252627;color:white;animation-delay:.5s;' onclick=''>Cars</div>
+		<div class="chip waves-effect waves-light animated fadeIn" style='background-color:#252627;color:white;animation-delay:.6s;' onclick=''>Bicycles</div>
+		<div class="chip waves-effect waves-light animated fadeIn" style='background-color:#252627;color:white;animation-delay:.7s;' onclick=''>Skateboards</div>
+		<div class="chip waves-effect waves-light animated fadeIn" style='background-color:#252627;color:white;animation-delay:.8s;'; onclick=''>Two-Wheelers</div>
+		
+	</div>	
+	<!-- before this row, whatever you put as fiXed  -->	
+
+		
+		
+		
+ 
+      <li id='xxxx' style='display:none;background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);overflow-x:;'><h5 style='float:left;font-size:21.8px;margin-left:17px;margin-top:25px;font-family:mont;position:absolute;left:1px;color:white'>• Trending Now</h5><a onclick='viewli()' style='float:right;margin-top:18px;margin-right:17px;position:absolute;right:0px;background-color:#212121;border-radius:200px;font-size:10px;' class='waves-effect waves-light btn'>View all</a><br/><br/><br/></li> <hr style='display:none;background-color:#634101;height:10px;border:0px;'>
+     <li id='section3' style='display:none;background-image: linear-gradient(-225deg, #DFFFCD 0%, #90F9C4 48%, #39F3BB 100%);overflow-x:;'><h5 style='float:left;font-size:21.8px;margin-left:17px;margin-top:25px;font-family:mont;position:absolute;left:1px;'>• Suggested</h5><a onclick='viewli()' style='float:right;margin-top:18px;margin-right:17px;position:absolute;right:0px;background-color:#000;border-radius:200px;font-size:10px;' class='waves-effect waves-light btn'>View all</a><br/><br/><br/></li> <hr style='display:none;background-color:#0b6f53;height:10px;border:0px;'> 
+
+		
+		
+		</div>
+		
+		
+		
+  
+	
+	
+	
+    </div>
+  
+  </div>
+        
+	
+	
+	   
+    <li id='section1' style='background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);overflow-x:scroll;margin-top:-35px'><hr style='background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);height:10px;border:0px;'><h5 style='float:left;font-size:21.8px;margin-left:17px;margin-top:15px;font-family:mont;position:absolute;left:1px;'>• New-Arrivals</h5><a onclick='viewli()' style='float:right;margin-top:8px;margin-right:17px;position:absolute;right:0px;background-color:#212121;border-radius:200px;font-size:10px;' class='waves-effect waves-light btn'>View all</a><br/><br/></li> <hr style='background-color:#5e0000;height:10px;border:0px;'>
+<br/>
+<div style="" id="idli"> </div>
+    
+
+
+<script>
+ 
+$("#nexttab").click(function () {
+    $("#categories").css("display", "none");
+});
+$("#nexttab2,#prevtab").click(function () {
+    $("#categories").css("display", "block");
+});
+
+</script>
+	
+
+<script>
+function go3(){
+
+NProgress.start();
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=order&max-results=1000&callback=mbtlist&by-date=true'></"+"script>");
+
+
+$(xxxx).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=-order&max-results=4&callback=mbtlistx'></"+"script>"); 
+$(section3).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=-order&max-results=4&callback=mbtlistsection3'></"+"script>"); 
+
+setTimeout(function() {
+     fixscroll()
+    }, 1200);
+	setTimeout(function() {
+     NProgress.done();
+    }, 400);
+
+}
+
+function fixscroll(){
+setTimeout(function() {window.scrollTo(00, 11);}, 1000)
+}
+</script>
+
+<script>
+function goh(){
+$(section1).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=-order&max-results=4&callback=mbtlistsection1'></"+"script>"); 
+}
+</script>
+
+<script type="text/javascript" >
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 140; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlist(json) {
+
+document.write('<div class="mbtlist">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+//################### Printing List
+var listing = "<div  style='padding:13px;'><div  id='mains' class='card ' style='margin-top:-13px;background-color:#fff;border-radius:4px;z-index:'><div class='card-image' style='' ><div   style='animation-delay:0.5s;' class='animated bounceIn node"+[i]+"' ><a class='progressive replace'  style='' href=" 
++ ListImage+ 
+"> <img style='margin-top:-1px;margin-right:-1px;'  data-src="
++ListImage+
+"> </div></a></div><div class='card-content ' ><span class='card-title activator grey-text text-darken-4'><a class='mbttitle' style='padding:0px;color:#000;align:left' href=" 
++ ListUrl+ 
+"><p style='margin-bottom:10px' id='book-name' >" 
++ ListTitle+ 
+"</p> </a><div style='margin-left:-10px;background-color:#fff   ;flat:right;color:#212121;height:18.8px;width:100%;font-family:mont;font-size:21.7px' class='chip'> <img style='margin-left:-5px' src='../img/para.png' > <p style='font-size:17px;font-family:roboto;color:#212121;margin-bottom:0px'>" 
++ ListContent +
+"</p> </div> </div>  </span><br/><hr class='style12' style='margin-bottom:5px;margin-top:15px'><div style='margin-bottom:0px;margin-top:0px;margin-left:0px;font-size:18px;'> <div class='row' style='margin-top:60px;border-top:0.4px solid #f0f0f0;height:30px;padding:0px;'><div class='col s6'><span style='background-color:transparent;color:#212121;height:1.8px;width:100%;font-family:mont;font-size:14.7px;padding:7px 12.5px;;' class='chip'> <img style='margin-left:0px;' src='../img/rs2.png' ><p id='book-content'>" 
++ListTag+ 
+"</p></span></div><div class='col s6 waves-effect waves-light' style='padding:0px;background-color:#343434;color:white;height:400%;padding:13px 39px;font-size:15px;'> • Add to Cart</div> </div></div></div></div>"; 
+$(idli).append(listing); 
+
+
+} 
+} 
+
+var ListBlogLink = "http://viofd.blogspot.com/"; 
+var ListCount = 1000; 
+
+</script>
+
+
+
+<script type="text/javascript" >
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 140; 
+var TitleCount = 140; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistsection1(json) {
+
+document.write('<div class="mbtlistsection1" style="">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, 90);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+//################### Printing List
+var listingsection1= "<div style=' white-space: nowrap;overflow-x:scroll;width:100%;display:inline'><li style='display:inline-block;background-color:;'><div  style='padding:13px'><div  id='mains' class='card ' style='margin-top:13px;background-color:#fff;border-radius:4px;width:290px;height:400px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='color:black;position:relative;left:18px;top:18px;overflow-x:' id='book-name' >" 
++ ListTitle+ 
+"</p> </a><div style='margin-left:8px;margin-top:20px;white-space:normal;background-color:#fff   ;flat:right;color:#212121;height:18.8px;width:100%;font-family:mont;font-size:21.7px' class='chip'> <img style='margin-left:-5px' src='../img/para.png' > <p style='font-size:17px;font-family:roboto;color:#212121;margin-bottom:0px;'>" 
++ ListContent + 
+"</p> </div>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'> <div class='row' style='margin-top:60px;border-top:0.4px solid #f0f0f0;height:62px;padding:0px;background-color:#fff;'><div class='col s6'><span style='background-color:transparent;color:#212121;height:1.8px;width:100%;font-family:mont;font-size:16.7px;padding:8px 14.5px;;' class='chip'> <img style='margin-left:0px;margin-top:-1.3px' src='../img/rs2.png' ><p id='book-content'>" 
++ListTag+ 
+"</p></span></div><div class='col s6 waves-effect waves-light' style='background-color:#5e0000;color:white;height:160px;padding:14px 44px;font-size:15px;position:absolute;text-align:Left;right:0px;'>Add to Cart  <i style='font-size:15px;position:relative;right:120px;' class='material-icons'>shopping_cart</i></div> </div></div></div></div></li></div>"; 
+$(section1).append(listingsection1); 
+
+
+} 
+} 
+
+var ListBlogLink = "http://viofd.blogspot.com/"; 
+var ListCount = 140; 
+
+</script>
+
+
+<script type="text/javascript" >
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 140; 
+var TitleCount = 140; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistx(json) {
+
+document.write('<div class="mbtlistx" style="">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, 90);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+//################### Printing List
+var listingx = "<div style=' white-space: nowrap;overflow-x:scroll;width:100%;display:inline'><li style='display:inline-block;background-color:;'><div  style='padding:13px'><div  id='mains' class='card ' style='margin-top:13px;background-color:#fff;border-radius:4px;width:290px;height:400px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:180px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='color:black;position:relative;left:18px;top:18px;overflow-x:' id='book-name' >" 
++ ListTitle+ 
+"</p> </a><div style='margin-left:8px;margin-top:20px;white-space:normal;background-color:#fff   ;flat:right;color:#212121;height:18.8px;width:100%;font-family:mont;font-size:21.7px' class='chip'> <img style='margin-left:-5px' src='../img/para.png' > <p style='font-size:17px;font-family:roboto;color:#212121;margin-bottom:0px;'>" 
++ ListContent + 
+"</p> </div>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'> <div class='row' style='margin-top:60px;border-top:0.4px solid #f0f0f0;height:62px;padding:0px;background-color:#fff;'><div class='col s6'><span style='background-color:transparent;color:#212121;height:1.8px;width:100%;font-family:mont;font-size:16.7px;padding:8px 14.5px;;' class='chip'> <img style='margin-left:0px;margin-top:-1.3px' src='../img/rs2.png' ><p id='book-content'>" 
++ListTag+ 
+"</p></span></div><div class='col s6 waves-effect waves-light' style='background-color:#634101;color:white;height:160px;padding:14px 44px;font-size:15px;position:absolute;text-align:Left;right:0px;'>Add to Cart  <i style='font-size:15px;position:relative;right:120px;' class='material-icons'>shopping_cart</i></div> </div></div></div></div></li></div>"; 
+$(xxxx).append(listingx); 
+
+
+} 
+} 
+
+var ListBlogLink = "http://viofd.blogspot.com/"; 
+var ListCount = 140; 
+
+</script>
+
+
+<script type="text/javascript" >
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 140; 
+var TitleCount = 140; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistsection3(json) {
+
+document.write('<div class="mbtlistsection3" style="">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, 90);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+//################### Printing List
+var listingsection3 = "<div style=' white-space: nowrap;overflow-x:scroll;width:100%;display:inline'><li style='display:inline-block;background-color:;'><div  style='padding:13px'><div  id='mains' class='card ' style='margin-top:13px;background-color:#fff;border-radius:4px;width:290px;height:400px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:180px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='color:black;position:relative;left:18px;top:18px;overflow-x:' id='book-name' >" 
++ ListTitle+ 
+"</p> </a><div style='margin-left:8px;margin-top:20px;white-space:normal;background-color:#fff   ;flat:right;color:#212121;height:18.8px;width:100%;font-family:mont;font-size:21.7px' class='chip'> <img style='margin-left:-5px' src='../img/para.png' > <p style='font-size:17px;font-family:roboto;color:#212121;margin-bottom:0px;'>" 
++ ListContent + 
+"</p> </div>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'> <div class='row' style='margin-top:60px;border-top:0.4px solid #f0f0f0;height:62px;padding:0px;background-color:#fff;'><div class='col s6'><span style='background-color:transparent;color:#212121;height:1.8px;width:100%;font-family:mont;font-size:16.7px;padding:8px 14.5px;;' class='chip'> <img style='margin-left:0px;margin-top:-1.3px' src='../img/rs2.png' ><p id='book-content'>" 
++ListTag+ 
+"</p></span></div><div class='col s6 waves-effect waves-light' style='background-color:#0b6f53;color:white;height:160px;padding:14px 44px;font-size:15px;position:absolute;text-align:Left;right:0px;'>Add to Cart  <i style='font-size:15px;position:relative;right:120px;' class='material-icons'>shopping_cart</i></div> </div></div></div></div></li></div>"; 
+$(section3).append(listingsection3); 
+
+
+} 
+} 
+
+var ListBlogLink = "https://viofd.blogspot.com/"; 
+var ListCount = 140; 
+
+</script>
+
+		
+
+
+<script>
+function go2(){
+
+
+$(idli).html(' <div class="row"><div class="col s12 m6"><div class="card grey darken-4"><div class="card-content white-text"><span class="card-title">Your Orders</span> <p>Here are your orders.<br>Images would not be loaded for order.<br>You can click to get order details.</p></div></div></div></div>');
+			  
+			  
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=food%order&max-results=1000&callback=mbtlist'></"+"script>");
+setTimeout(function() {
+     NProgress.done();
+    }, 300);
+
+}
+
+</script>
+
+
+
+<script>
+function goboost(){
+
+
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/boost?alt=json-in-script&max-results=1000&callback=mbtlist'></"+"script>");
+
+
+}
+
+</script>
+
+
+
+
+<script>
+function gofeatured(){
+
+
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/featured?alt=json-in-script&max-results=1000&callback=mbtlist'></"+"script>");
+
+
+}
+
+</script>
+
+
+
+
+<script>
+function gooffers(){
+
+NProgress.start();
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=ad1+-autosell&max-results=1000&callback=mbtlist'></"+"script>");
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=ad2+-autosell&max-results=1000&callback=mbtlist'></"+"script>");
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=ad3+-autosell&max-results=1000&callback=mbtlist'></"+"script>");
+setTimeout(function() {
+     NProgress.done();
+    }, 300);
+
+}
+</script>
+
+
+
+<script>
+function godel(){
+NProgress.start();
+
+$(idli).html('<br><br>');
+$(idli).append("<div style='background-color:#0d0028;height:125px;position:fixed;top:-10px;width:100%;z-index:999'><input id='searchinput' name='searchinput' style='position:relative;top:63px;margin-left:20px;background-color:#0d0028;color:white;width:75%;padding:6px 23px;' value='' placeholder='Search Items . . .'> </input><a onclick='alert('startingsearch')' style='margin-left:20px;margin-bottom:10px;float:right;background-color:#9FFFF5;color:#000;margin-right:27px;' class='waves-effect waves-light btn'><i class='material-icons right'>send</i>Go</a></div>");
+
+setTimeout(function() {
+     NProgress.done();
+    }, 300);
+}
+
+</script>
+
+
+<script>
+
+$(document).keyup(function (e) {
+    if ($("#searchinput:focus") && (e.keyCode === 13)) {
+      searchgo();
+	 
+	
+	
+    }
+ });
+function searchgo(){
+var tt = document.getElementById("searchinput");
+oU.search = tt.value;
+LS.set('oUser', oU);
+alert(oU.search);
+
+gosearch();
+
+}
+
+ 
+</script>
+
+
+<script>
+function gosearch(){
+
+NProgress.start();
+$(idli).html('');
+alert('3rdstage');
+$(idli).append("<div style='background-color:#0d0028;height:125px;position:fixed;top:-10px;width:100%;z-index:999'><input id='searchinput' name='searchinput' style='position:relative;top:63px;margin-left:20px;background-color:#0d0028;color:white;width:82%;padding:6px 23px;' value='' placeholder='Search Items . . .'> </input><a onclick='searchgo()' style='margin-left:20px;margin-bottom:10px;float:right;background-color:#9FFFF5;color:#000;margin-right:27px;' class='waves-effect waves-light btn'><i class='material-icons right'>send</i>Go</a></div>");
+
+$(idli).append("<br/><br/><script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q="+oU.search+"+-order&max-results=1000&callback=mbtlist'></"+"script>");
+setTimeout(function() {
+     NProgress.done();
+    }, 300);
+
+}
+</script>
+
+
+
+
+<script>
+function gopro(){
+
+
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/processing?alt=json-in-script&max-results=1000&callback=mbtlist'></"+"script>");
+
+
+}
+
+</script>
+
+
+
+
+
+<script>
+function godis(){
+
+
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/dispatched?alt=json-in-script&max-results=1000&callback=mbtlist'></"+"script>");
+
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+</script>
+
+
+ <script>
+ function  hey(){
+   var str = document.getElementById("idli").innerHTML; 
+    var res = str.replace(/Hey t/g, " ");
+    document.getElementById("idli").innerHTML = res;
+}
+</script>
+
+
+ <script>
+ function  hide(){
+   $crisp.push(["do", "chat:hide"])
+}
+</script>
+
+
+<script>
+var LS = {
+    get : function( id ) {
+        var item = localStorage.getItem( id );
+        if(item){
+          return item.charAt(0)=='{' ? JSON.parse(item) : item;
+        }else{
+          return {}; 
+        }
+    },	
+    set : function( id, key ) {
+        var k = typeof key=="object" ? JSON.stringify( key ) : key;
+        console.log( k );
+        return localStorage.setItem( id, k );
+    },
+    del : function( id ){
+        return localStorage.removeItem( id );
+    }
+};
+
+
+var oU = LS.get('oUser'); // should be a stored Obj
+
+if(!oU.name){
+  
+  oU.date = new Date().toUTCString();
+  LS.set('oUser', oU); // Store back the whole object
+}else{
+ 
+}
+
+
+/*
+LS.del('oUser');*/
+</script>
+</div>
+</body>
+</html>

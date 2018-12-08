@@ -1,0 +1,1647 @@
+<html>
+
+<head>
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> REVOKE</title>
+
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript"  src="../js/jquery.easing.min.js"></script>
+<script type="text/javascript"  src="../js/materialize.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAMLGI3cZB5QdVYTAmXrVuNsApX9GXYupQ&callback=initMap"></script>
+<script type="text/javascript"  src="../ext/lazyload.js"></script>
+
+<link href="../css/ionicons.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/ionic.css">
+<link rel="stylesheet" type="text/css" href="../ext/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+
+
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+
+<style>
+html,body
+{
+width:100%;
+background:linear-gradient(135deg, #212121 0%,#1bcedf 100%);
+
+
+}
+@font-face {
+    font-family: mont;
+    src: url('../css/mont.ttf');
+}
+
+}
+p,h3,h4
+{
+font-family:mont;
+}
+
+
+.toast
+{
+
+ position:fixed; top:20px;
+background:transparent url('../img/trans.png') repeat center top;
+ 
+}
+
+img
+{
+width:100%;
+}
+
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    background-color: #000;
+    z-index: 2000;
+    color: #fff;
+}
+.ui-menu .ui-menu-item {
+    background: #90c141;
+    color: #fff;
+    padding-left: 15px;
+    word
+}
+#search{
+    width: 170px;
+}
+.ui-autocomplete {
+    z-index: 2000;
+    width: 170px !important;
+}
+.customIcon {
+    width: 16px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+.ui-menu-item span {
+    display: inline-block;
+    width: 80%;
+}
+
+
+
+.fab {
+  background: #212121;
+  box-shadow: 0 2px 2px rgba(#000,.3);
+  color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  font-size: 1.7em;
+  line-height: 1.5em;
+  text-align: center;
+  text-decoration: none;
+  width: 2em;
+  height: 2em;
+  transition: all .2s ease;
+  
+  &:hover {
+    box-shadow: 0 10px 20px rgba(#000,.2);
+  }
+}
+
+
+.fab-message__content {
+background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+ background-blend-mode: multiply,multiply;
+  box-shadow: none;
+  color: #212121;
+  padding: 20px;
+  overflow-y: scroll;
+  height:400px;
+  width:100%;
+  transition: all .3s;
+}
+
+.fab-message.is-open {
+  transform: translateY(0);
+  
+  .fab-message__button {
+    transform: translateY(-0em);
+  }
+  
+  .fab-message__content {
+     box-shadow: 0 0 30px rgba(#000,.3);
+  }
+}
+
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 13px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 60px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.3s, fadeout 0.5s 0.5s;
+    animation: fadein 0.3s, fadeout 0.5s 0.5s;
+}
+
+
+
+#snackbar2 {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #e22f37;
+	font-family:mont;
+	border-radius:200px;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 13px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 60px;
+    font-size: 17px;
+}
+
+#snackbar2.show {
+    visibility: visible;
+	border-radius:200px;
+    -webkit-animation: fadein 0.3s, fadeout 0.5s 0.5s;
+    animation: fadein 0.3s, fadeout 0.5s 0.5s;
+}
+
+#snackbar3 {
+    visibility: hidden;
+    min-width: 100%;
+    background-color: #e22f37;
+	font-family:mont;
+    color: #fff;
+    text-align: center;
+    padding: 13px;
+    position: fixed;
+    z-index: 1;
+    bottom: 0px;
+    font-size: 17px;
+}
+
+#snackbar3.show {
+    visibility: visible;
+}
+
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 60px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 60px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 60px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 60px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+hr.style12 {
+	height: 6px;
+	background: url(../images/hr-12.png) repeat-x 0 0;
+    border: 0;
+}
+
+
+hr.style12blue {
+	height: 6px;
+	background: url(../images/hr-12blue.png) repeat-x 0 0;
+    border: 0;
+}
+
+
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+
+hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #f2919c, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #f2919c, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #f2919c, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #f2919c, #f0f0f0); 
+}
+
+
+hr.style11 {
+	border-top: 1px dashed #8c8b8b;
+	border-bottom: 1px dashed #212121;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 2px;
+}
+
+#map-canvas {
+display:none;
+  height: 0px;
+  width: 70%;
+ float:left
+  border: 1px solid #996699;
+  border-radius: 5px;
+}
+
+#floating-panel {
+  position: float top;
+  z-index: 5;
+  background-color: #BF5FFF;
+  padding: 5px;
+  border: 1px solid #996699;
+  border-radius: 5px;
+  text-align: center;
+  font-family: 'Roboto', 'sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#output {
+  float: left;
+  height: 50%;
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="../css/stepsfood.css">
+<link rel="stylesheet" type="text/css" href="../css/styleblack.css">
+
+ 
+</head>
+
+
+<body  onload="getUserLocation();ClearFields();">
+
+<div id='book'><div onclick="closeoverprice();" id="overprice" style="background-color:red;z-index:999999;position:fixed;top:-25px;width:80%;margin-top:30px;height:92px;padding:6px 4px;display:none;border-radius:4px;"><p>You are far away from seller, Ignore delivery charges shown to you. We will confirm delivery charges on phone call.</p> </div>
+<div style="position:fixed; box-shadow:0px 1px 1px #636a7e;" class="bar bar-header bar-green animated ">
+
+
+
+
+ <button onclick="window.location.reload();" class="button icon ion"><img src="../img/spoon.png" style="width:28px;height:28px;"/></button>
+  <a onclick="rey()"><h1 class="title animated bounceIn" style="font-family:mont; animation-delay: 0.5s;" >InstaFood</a></h1>
+  <button id="btnGetValues2" onclick="showdiv()"  class="button icon ion-android-cart" style="animation-delay: 0.0s;font-family:mont;">Cart</button>
+</div>
+
+
+		
+<div class=" animated fadeInUp"  style="display:none;overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:999999;position:fixed;top:00px;background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);opacity:.5;width:100%;height:100%;display:none;" id="welcomediv">
+
+ <a  onclick="welcome()" style="width: 3em;
+  height: 3em;float:right;margin-right:20px;margin-top:20px;" class="btn-floating btn-large waves-effect waves-light white"><i style="line-height: 1.9em;color:black;font-size:23px" class="material-icons">x</i></a>
+
+  <br/>
+  <center> <img src="https://image.flaticon.com/icons/svg/45/45332.svg" width="96px" height="96px" style="margin-top:140px;"/>
+  <h4  style="font-family:mont;margin-left:0px;color:#212121" >InstaFood</h4>
+
+<p style="margin-left:0px;color:#212121">Food Delivery Service welcomes you!</p>
+  <img src="../img/stickers.png" style="width:100%;height:auto;margin-bottom:15px;" /> <a   onclick="welcome()" class="btn-floating btn-large waves-effect waves-light red"><i style="background-color:#212121;font-size:36px;padding:10px;" class="icon ion-log-in"></i></a>
+        
+
+ </center>
+ </div>
+		
+
+
+<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:999;position:fixed;top:00px;background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+ background-blend-mode: multiply;opacity:.5;width:100%;height:100%;display:none;" id="myDIV">
+
+ <a  onclick="showdiv()" style="width: 2em;
+  height: 2em;float:right;margin-right:20px;margin-top:20px;" class="btn-floating btn-large waves-effect waves-light white"><i style="line-height: 1.9em;color:black;font-size:16px" class="material-icons">x</i></a>
+
+  <br/>
+   <h4  style="font-family:mont;margin-left:10px;margin-top:0px;color:#fff" >Your Cart</h4>
+
+<p style="margin-left:10px;color:#a7a7a7">Add items to show more.</p>
+ 	<div id="cart" style="margin-left:9px;"></div>  
+
+ 
+ 
+  
+  <div style="color:#eb5261;font-size:14px;background-color:#fff;border-radius:2px;margin-right:20px;margin-bottom:10px;margin-left:10px;padding:10px;"> <b style="float:right"> Rs. </b> Total =<span style="color:#eb5261;font-size:14px; font-weight: bold;text-align:right;float:right;margin-right:9px; " id="beforedelivery"></span>
+  <br/>
+   <b style="float:right"> Rs. </b>Delivery Charges = <span style="color:#eb5261;font-size:14px; font-weight: bold;float:right " id="price2"></span>
+   
+  <hr class='style14' style='margin-bottom:5px'>
+ <b style="float:right"> Rs. </b>Final Total =<span style="color:#eb5261;font-size:14px; font-weight: bold;text-align:right;float:right;margin-right:9px; " id="calculatesum2"></span>
+  </div>
+  
+ 
+ <div style="font-size:20px;background-color:#e83a4c;color:#79dbfb;border-radius:0px;margin-right:20px;margin-left:10px;padding:10px;"><label style="font-size:20px;color:white" onclick="calc()" for="" style="margin-left:9px;color:yellow">Final Total is &#8377;</label>
+        <span style="font-family:mont" id="calculateSum">0</span> <p style="font-size:14px;margin-left:0px;color:white">You are <span style="color:#fff;font-size:14px; font-weight: bold; " id="kms"></span> away from seller.</p><p style="font-size:14px;margin-left:0px;color:white">&#8377; <span style="color:#fff;font-size:14px; font-weight: bold; " id="baseprice"></span> base price included.</p><p style="font-size:14px;margin-left:0px;color:white">&#8377; <span style="color:#fff;font-size:14px; font-weight: bold; " id="price"></span> delivery charges included.</p><p style="font-size:14px;margin-left:0px;color:white"> &#8377;  <span id="tax" style="font-weight:bold;font-size:14px;margin-left:0px;color:white"></span> service charge included. </p></div>
+  
+
+   
+   <div style="color:#fff;font-size:14px;background-color:#eb5261;border-radius:2px;margin-right:20px;margin-bottom:10px;margin-top:10px;margin-left:10px;padding:10px;">
+   Avg. Time Needed = <span style="color:#fff;font-size:14px; font-weight: bold; " id="avgtime"></span>
+  </div>
+   
+<hr class='style13' style='margin-bottom:5px'>
+   
+   
+  
+  <ul style="border:0px;margin-left:10px;margin-right:20px;" class="collapsible" data-collapsible="accordion">
+    <li>
+      <div id="cart2div" style="background-color:#ddd;border-radius:2px;margin-left:0px"  class="collapsible-header">Evaluate Prices <i style="float:right" class="icon ion-arrow-down-b"></i></div>
+      <div id="cart2" style="padding:0px;margin-top:10px;width:100%;background-color:#ddd;border-radius:4px;" class="collapsible-body"><p style="margin-left:0px;padding:18px;font-family:mont;font-size:15px">&#x25cf; &nbsp; Delivery charges are based on how far you are from seller.</p><p style="margin-left:0px;padding:18px;font-family:mont;font-size:15px">&#x25cf; &nbsp; Delivery charges : &#8377; 10 taken per kilometer by seller.</p><p style="margin-left:0px;padding:18px;font-family:mont;font-size:15px">&#x25cf; &nbsp; Service Tax : 10% charges are included in base rate.</p></div>
+	  
+    </li>
+   
+  </ul>
+   
+
+  
+ <!-- multistep form -->
+<form id="msform" name="AAAA-SellEn" style="\" action="https://formspree.io/toshuu.ps4@gmail.com" method="POST">
+
+  <!-- fieldsets -->
+  <fieldset>
+   
+
+
+    
+	
+	
+    <input type="button" name="next" style="border-radius:200px;background-color:#e83a4c;width:70%;" class="next action-button"   value="Confirm" />
+	
+  </fieldset>
+  
+ 
+
+
+  <fieldset>
+    <h2 class="fs-title" style="font-family:mont;color:white">Personal Details</h2>
+    <h3 class="fs-subtitle" style="font-family:mont;color:white">Tell us about yourself</h3>
+	<input type="hidden" name="_format" value="plain" />
+	<input class="pure-input-1" style="font-family:mont" name="_next" type="hidden" value="http://jovial-agnesi-bfb6c3.bitballoon.com/thank-you-food.html" />
+	<input type="hidden" name="_cc" value="toshuu.ps4.food@blogger.com" />
+	 <input class="pure-input-1" name="_subject" type="hidden" value="Food Order" />
+    <input type="text" style="border:solid white;color:white" name="name" placeholder="Your Name" required/>
+	 <input type="text"  style="border:solid white;color:white" name="mobile" placeholder="Mobile number" required/>
+	  <input type="email"  style="border:solid white;color:white" name="email" placeholder="Email" />
+	 <textarea  style="height:80px;border:solid white;color:white" name="address" placeholder="Your Address" required></textarea>
+      <input type="" class="pure-input-1" id="moolat" name="Detected-Latitude" type="text" />
+	   <input type="" class="pure-input-1" id="moolong" name="Detected-Longitude" type="text" />
+	   <input type="" class="pure-input-1" id="moolatlong" name="Order Location" type="text" />
+	      <input type=""  style="border:solid white;color:black" class="pure-input-1" id="myip"  name="Order Number" type="text" />
+	      <input type=""  style="border:solid white;color:black" class="pure-input-1" id="UserActivity"  name="Search History" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="moo" name="Products-Ordered" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="authorx" name="Store-Name" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="speedestimate" name="Speed Estimate" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="inpbaseprice" name="Base-Price" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="inptax" name="Service-Tax" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="pricex" name="Delivery-Charges" type="text" />
+   <input type="" class="pure-input-1" id="sum" name="Bill Total" type="text" />
+   
+
+   
+ 
+     <button  style="background-color:#e83a4c;color:white;padding:9px;border:0px;font-family:mont;border-radius:1.4px" type="submit" class="pure-button pure-button-primary">Order Now</button><br/><br/><br/><br/><br/>
+  </fieldset>
+  
+ 
+   
+         
+</form>
+  <center><a target="blank" href="http://pepper.bitballoon.com"> <img src="../img/pepperw.png" style="width:32px;height:32px;" /> <p style="font-family:mont;padding:6px;color:#ddd">Powered by Pepper</p></a></center>
+  <br/>
+
+  <center><div style="width:92%;margin-left:10px;font-family:mont;font-size:20px;color:white;float:left" id="output">
+	<section style="width:100%;height:0px;background-color:yellow;" id="map-canvas"></section>
+ <p style="font-size:0px;">Distance :<span id="a2b"></span> </p>
+	 <p  style="font-size:0.1px;"> &nbsp; </p>
+	 <p  style="font-size:0.1px;"> &nbsp; <span id=""></span> </p>
+
+</div>
+</center>
+
+<br/><br/><br/></div>
+
+
+
+
+
+
+<center><br/><br/><br/><br/>
+<img class=" animated fadeInUp"  style="width:70px" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgMzgwLjcyMSAzODAuNzIxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzODAuNzIxIDM4MC43MjE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTkwLjM3MiwyOS44MTNjLTg4LjY3MywwLTE2MC41NDYsNzEuODczLTE2MC41NDYsMTYwLjU0N2MwLDYzLjg5MSwzNy40MTgsMTE4Ljg5NCw5MS40NDUsMTQ0LjczNGw1LjAyNS05Ny4wOTggICAgYzAsMC05LjQ1Mi0zLjEwMi0xMS41MjEtNC4xMTJjLTIwLjA0OC04LjgzMS0zNC42MTItMzQuODMzLTM0LjYxMi02OC41OGMwLTM2LjgyNSwyOC41NTktNjguNTQ0LDU2LjE3LTY4LjgwNiAgICBjMC4wMzUsMCwwLjAzNSwwLDAuMDU4LDBjMC4wMTIsMCwwLjAzNSwwLDAuMDQ2LDBjMjcuNjE3LDAuMjYxLDU2LjE3NywzMS45OCw1Ni4xNzcsNjguODA2YzAsMzMuNzQ3LTE0LjU4Miw1OS43MzgtMzQuNTg5LDY4LjU4ICAgIGMtMC4xNTcsMC4wNjktMTEuNjEzLDQuMjI5LTExLjYxMyw0LjIyOWw1LjYxMiwxMDcuOTYxYzEyLjMxNSwzLjAzMSwyNS4xMTksNC44MSwzOC4zNyw0LjgxYzE3Ljg3LDAsMzQuOTg0LTMuMDQ0LDUxLjA0MS04LjQyNCAgICBsNC45NzMtOTYuMjE0Yy0xMy4xMDUtMi44ODItMjQuMjgzLTExLjIyNS0zMS4yODktMjEuNjkyYy04LjY3OS0xMy4wMDEsNi42ODEtMTI4LjA2Nyw2LjY4MS0xMjguMDY3aDkuOTkydjEwNy45NzhoOS45MjNWOTYuNDk5ICAgIGgxMC44NTJ2MTA3Ljk5aDkuODc2Vjk2LjQ5OWgxMS4yNTl2MTA3Ljk5aDkuOTFWOTYuNDk5aDcuNjY4YzAsMCwxNS4zNiwxMTUuMDY2LDYuNjcsMTI4LjA2NyAgICBjLTYuOTM3LDEwLjM2NC0xOC4wMSwxOC42ODMtMzAuOTUyLDIxLjYzNGMtMC4yMzIsMC4wODItMC40NDIsMC4xNjItMC40NDIsMC4xNjJsNC4zMjIsODIuNzYxICAgIGM0Ny44MjMtMjcuODA0LDgwLjA1My03OS40Niw4MC4wNTMtMTM4Ljc2MkMzNTAuOTA3LDEwMS42ODcsMjc5LjAzNCwyOS44MTMsMTkwLjM3MiwyOS44MTN6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTEwMy42NjIsMTQ4Ljk4YzAuNTc1LTIuMzQxLDEuMzQ4LTQuNTY2LDEuMzgzLTQuNjA2YzAuMjUtMC44NzctMC4yMTUtMS43NzItMS4xNjgtMi4zNDEgICAgYy0wLjkwNi0wLjQ4OC0yLjAxLTAuMjM4LTIuNTIxLDAuNTQ2YzAsMC0xLjA5OCwxLjc0OS0yLjY5LDQuMzM0Yy0xLjI5NSwyLjIyNS0zLjIxMiw1Ljc4LTQuNTIsMTAuMjA3ICAgIGMtMS4xMzMsMy44OC0yLjQ4Niw5LjAzOS0zLjA5NiwxNC44MTNjLTAuMjYxLDMuMDMzLTAuMzIsNS43NjktMC4yMjcsOC41ODZjMC4yMjcsMy4yMTIsMC43MTQsNS45NiwxLjY0NCw5LjEwMyAgICBjMy4xNTQsOC45NjQsNS41ODMsMTcuNjQ0LDE0LjM0OSwyNi4yMDZjMi43NzEsMi44NDcsNS42MTgsNC43ODcsNy42NzQsNi4yMTZsMC43MjYsMC41MTFjMC40NDIsMC4yOTEsMC44NjYsMC41NTksMS4yODQsMC44MDMgICAgYzEuNzI2LDAuOTA2LDIuODgxLDEuMjMxLDMuMDkxLDEuMjc3YzAuODU5LDAuMjMyLDEuNzQzLTAuMTg2LDIuMTA4LTAuODgzYzAuMzQzLTAuNzMyLDAuMDkzLTEuNjUtMC42MjEtMi4yMyAgICBjMCwwLTEtMC44NzEtMi4yODMtMi40OThjLTAuODc3LTAuOTg4LTEuODMtMi40MTctMi45MzktNC4wMzFjLTAuNzg0LTEuMTM5LTEuNzA4LTIuNDI5LTIuNTY4LTMuNjg0ICAgIGMtNC4yNy02LjUxOC02LjczMi0xNS42MTUtMTAuMTM3LTI0LjkzNGMtMC42NjgtMi4wMjItMS4yMTQtNC42NDItMS40MTgtNi44NjdjLTAuMjcyLTIuNTY4LTAuNC01LjA0Mi0wLjQtNy4zMzcgICAgYy0wLjA5OS01LjMzMywwLjEzOS05LjkxMSwwLjYwNC0xMy42MjNDMTAyLjQ3MSwxNTQuMzYsMTAyLjg4OSwxNTEuMjE3LDEwMy42NjIsMTQ4Ljk4eiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik0xOTAuMzcyLDBDODUuNDE1LDAsMCw4NS4zOTcsMCwxOTAuMzZDMCwyOTUuMyw4NS40MTUsMzgwLjcyMSwxOTAuMzcyLDM4MC43MjFjMTA0Ljk1MiwwLDE5MC4zNS04NS40MjEsMTkwLjM1LTE5MC4zNjEgICAgQzM4MC43MjEsODUuMzk3LDI5NS4zMjQsMCwxOTAuMzcyLDB6IE0xOTAuMzcyLDM2Ni41MjNjLTk3LjE0NCwwLTE3Ni4xOC03OS4wMy0xNzYuMTgtMTc2LjE2MyAgICBjMC05Ny4xNDQsNzkuMDM2LTE3Ni4xOCwxNzYuMTgtMTc2LjE4Yzk3LjEzMywwLDE3Ni4xNzUsNzkuMDM2LDE3Ni4xNzUsMTc2LjE4QzM2Ni41NDYsMjg3LjQ5MywyODcuNTA0LDM2Ni41MjMsMTkwLjM3MiwzNjYuNTIzeiAgICAiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+</center>
+<br/>
+<center><h5 class=" animated fadeInUp"  style="font-family:mont;color:#fff">What do you want to eat? </h5> <br/> 
+
+
+	
+	 <input type="" class="pure-input-1" style="background-color:#;color:black" id="searchterm" name="searchtermmmm" placeholder="Search Food Items" type="text" /> </center>
+	  
+	
+	
+<div class="row" style="background-color:#;overflow-x:scroll;width:100%;margin-top:5px;">
+  
+         
+        <div   onclick="goall();" class="animated bounceIn"   >
+          <div style="width:88px;height:88px;background-image: url(../img/chef.png);background-size:43px;background-repeat:no-repeat;background-position:center;margin-right:4px;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:white;margin-top:6px;font-size:15px;">All Items</p></center>
+      </div>
+         
+
+	  
+         
+
+        <a href="indexagain.html"> 
+        <div onclick="go2();myCategory();" class="animated bounceIn"   >
+          <div style="margin-left:4px;width:88px;height:88px;background-image: url(../img/applex.png);background-size:43px;background-repeat:no-repeat;background-position:center;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:white;margin-top:6px;font-size:15px;">Fruits</p></center>
+      </div>
+        </a>
+
+	  
+           
+       <a href="food.html"> <div onclick="" class="animated bounceIn"   >
+          <div style="width:88px;height:88px;background-image: url(../img/fries.png);background-size:43px;background-repeat:no-repeat;background-position:center;margin-right:4px;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:white;margin-top:6px;font-size:15px;"> Fries</p></center>
+      </div></a>
+        
+
+
+  
+        <div  class="animated slideInRight"   >
+          <div style="margin-left:4px;width:88px;height:88px;background-image: url(../img/more.png);background-size:60px;background-repeat:no-repeat;background-position:center;margin-right:4px;margin-right:4px;border-radius:2px;" class="pure-u-1-3 ">
+		  </div><center><p style="font-family:mont;color:white;margin-top:6px;font-size:15px;"></p></center>
+      </div>
+      
+
+	  
+       
+	  
+         
+
+         <a href="../food/track.html"> 
+        <div class="" >
+          <div style="margin-left:4px;width:88px;height:88px;background-image: url(https://image.flaticon.com/icons/svg/135/135739.svg);background-size:60px;background-repeat:no-repeat;background-position:center;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:black;margin-top:6px;font-size:15px;">Track Order</p></center>
+      </div>
+         </a>
+
+	  
+         
+
+         <a href="food - original.html"> 
+        <div class="" >
+          <div style="margin-left:4px;width:88px;height:88px;background-image: url(https://image.flaticon.com/icons/svg/45/45332.svg);background-size:60px;background-repeat:no-repeat;background-position:center;margin-right:4px;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:black;margin-top:6px;font-size:15px;">Fresh Food</p></center>
+      </div>
+         </a>
+
+	  
+         
+         <a href="food - original.html"> 
+        <div class="" >
+          <div style="width:88px;height:88px;background-image: url(https://image.flaticon.com/icons/svg/639/639346.svg);background-size:56px;background-repeat:no-repeat;background-position:center;margin-right:4px;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:black;margin-top:6px;font-size:15px;">Fresh Food</p></center>
+      </div>
+         </a>
+
+	  
+         
+
+         <a href="food - original.html"> 
+        <div class="" >
+          <div style="margin-left:4px;width:88px;height:88px;background-image: url(https://image.flaticon.com/icons/svg/135/135739.svg);background-size:60px;background-repeat:no-repeat;background-position:center;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:black;margin-top:6px;font-size:15px;">Fresh Food</p></center>
+      </div>
+         </a>
+
+	  
+         
+
+         <a href="food - original.html"> 
+        <div class="" >
+          <div style="margin-left:4px;width:88px;height:88px;background-image: url(https://image.flaticon.com/icons/svg/45/45332.svg);background-size:60px;background-repeat:no-repeat;background-position:center;margin-right:4px;margin-right:4px;border-radius:2px;" class="pure-u-1-3 waves-effect waves-dark">
+		  </div><center><p style="font-family:mont;color:black;margin-top:6px;font-size:15px;">Fresh Food</p></center>
+      </div>
+         </a>
+
+	  
+         
+
+	  
+		 
+		
+  
+  
+  
+  
+    </div>
+	   
+ 
+ 
+
+ 
+ 
+ 
+   <div class="row" >
+      <div onclick="search();searchfeed();" style="background:linear-gradient(135deg, #e8e8e8 0%,#e8e8e8 100%);margin-right:8px;margin-left:4px;border-radius:4px;height:40px;" class="col s6"><h6 style="font-family:mont;font-size:16px;padding:3.9px;color:#121316;"><center>Search Items</center></h6></div> 
+   <div  onclick="location.href='trackhome.html'" style="background:linear-gradient(135deg, #e8e8e8 0%,#e8e8e8 100%);margin-left:8px;margin-right:4px;border-radius:4px;height:40px;" class="col s6 "><h6 style="font-family:mont;font-size:16px;padding:3.9px;color:#121316;"> <center> Track Order</center></div> 
+    </div>
+
+<center><div style="color:#d5d7dd;font-size:20px" id="endofresults"> </div></center>
+<div style="" id="boost"><h5 style="font-family:mont;color:#fff;margin-left:18px;">• Featured</h5></div>
+<div style="" id="idli"> <h5 style="font-family:mont;color:#fff;margin-left:18px;">• Recently Added</h5></div>
+
+
+<center><div style="color:;font-size:20px;padding:10px" id=""> 
+
+ <div id="horiz" style="display:none" class="col s12 m7">
+  
+    <div class="card horizontal" style="border-radius:7px;">
+      <div class="card-image" style="margin-top:-1px;margin-bottom:-1px;">
+        <img src="../img/food.png" style="padding:20px;width:105px;height:105px;">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p style="text-align:left;margin-bottom:8px;" id="endofresults2"></p>
+
+		  <p style="text-align:left;font-size:12px;"> • This item's price and quantity will be discussed with you over confirmation call.</p>
+        </div>
+        <div class="card-action">
+         <div  style='background-color:#ff6f00;border-radius:4px;height:30px;padding:0px;float:right;width:110px;color:white;margin-left:14px;margin-bottom:10px;cursor:pointer'  onclick='fallback();myAdded();' class='chip'>   <b  style='background-color:#ff6f00;color:#fff;font-family:mont'> &#8226; Add to cart</b></div><br/>
+		 </div>
+      </div>
+    </div>
+  </div>
+            
+
+</div></center>
+
+	<div    id="btnGetValues" onclick="showdiv();$('#menu').removeClass('pulse');" class="fab-message" style="z-index:999">
+   <a  id='menu' style="position:fixed;bottom:60px;right:30px;background-color:#212121;;z-index:999999" class="btn-floating btn-large  "><i style="font-size:24.5px;padding:17px;z-index:999999" class="icon ion-android-cart"></i></a>
+        
+ 
+          
+</div>
+
+
+	<div   id="btnGetValues3"  onclick="showdiv();$('#menu').removeClass('pulse');" class="fab-message" style="z-index:999">
+   <a  style="position:fixed;bottom:125px;right:30px;background-color:#121316;color:white;;z-index:999999;opacity:.7" class="btn-floating btn-large  "> <p  id="quicktax"> &#8377 </p></a>
+        
+ 
+          
+</div>
+
+
+<div id="snackbar">Item Added to cart.</div>
+
+<div id="snackbar2">Items List Updated.</div>
+<div id="snackbar3">Proof.</div>
+
+
+  
+<script>
+$(document).keyup(function (e) {
+    if ($("#searchterm:focus") && (e.keyCode === 13)) {
+      search();
+	 
+	
+	
+    }
+ });
+ 
+$.getJSON("http://jsonip.com?callback=?", function (data) {
+	   var input = document.getElementById("myip");
+	   var d = new Date();
+    var n = d.getHours();
+	var n2 = d.getDay()
+	
+input.value = (n+"T"+n2+"T"+data.ip) ;
+
+});
+
+</script>
+     
+	
+<script>// this is the first time
+if (! localStorage.noFirstVisit) {
+   $('.tap-target').tapTarget('open');
+
+}
+ localStorage.noFirstVisit = "2";
+
+
+</script>
+	  
+<script>
+/*Automatic Location Detection*/
+var getUserLocation = function () {
+    console.log("getting location");
+    //check if the geolocation object is supported, if so get position
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(displayLocation, displayError);
+    } else {
+        document.getElementById("locationData").innerHTML = "Sorry - your browser doesn't support geolocation!";
+    }
+};
+
+
+var displayLocation = function (position) {
+
+    //build text string including co-ordinate data passed in parameter
+    var displayText = "User latitude is " + position.coords.latitude + " and longitude is " + position.coords.longitude;
+
+   
+   var input = document.getElementById("moolatlong"); // "moo" is the 'id' of the text field
+input.value = "https://www.google.com/maps?q=" + position.coords.latitude + "," + position.coords.longitude;;
+
+
+   
+var input = document.getElementById("moolat"); // "moo" is the 'id' of the text field
+input.value = position.coords.latitude ;
+
+var input = document.getElementById("moolong"); // "moo" is the 'id' of the text field
+input.value = position.coords.longitude ;
+
+var pop1 =  position.coords.latitude;
+var pop2 =  position.coords.longitude;
+
+
+function initMap() {
+
+ var pointA = new google.maps.LatLng(pop1,pop2),
+    pointB = new google.maps.LatLng(20.386650, 78.126333),
+    center = new google.maps.LatLng(42.599814, -71.367284),
+    myOptions = {
+      zoom: 8,
+      center: center,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    },
+    map = new google.maps.Map(document.getElementById('map-canvas'), myOptions),
+    // Instantiate a directions service.
+    directionsService = new google.maps.DirectionsService,
+    directionsDisplay = new google.maps.DirectionsRenderer({
+      map: map
+    }),
+
+    outputAtoB = document.getElementById('a2b'),
+    flightPath = new google.maps.Polyline({
+      path: [pointA, pointB],
+      geodesic: true,
+      strokeColor: '#000000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+
+  // click on marker B to get route from A to B
+  calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB, outputAtoB);
+
+  
+}
+
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB, outputTxt ) {
+  var selectedMode = 'DRIVING';
+
+  directionsService.route({
+    origin: pointA,
+    destination: pointB,
+    unitSystem: google.maps.UnitSystem.METRIC,
+    travelMode: google.maps.TravelMode[selectedMode]
+  }, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+      outputTxt.innerHTML = Math.round(directionsDisplay.getDirections().routes[directionsDisplay.getRouteIndex()].legs[0].distance.value ) + "ms";
+
+          price.innerHTML = Math.round(directionsDisplay.getDirections().routes[directionsDisplay.getRouteIndex()].legs[0].distance.value / 1000 * 10 ) + "Rs. Delivery";
+          price2.innerHTML = Math.round(directionsDisplay.getDirections().routes[directionsDisplay.getRouteIndex()].legs[0].distance.value / 1000 * 10 ) + " " ;
+         
+          kms.innerHTML = Math.round(directionsDisplay.getDirections().routes[directionsDisplay.getRouteIndex()].legs[0].distance.value / 1000 ) + "Kms";
+          avgtime.innerHTML = Math.round(directionsDisplay.getDirections().routes[directionsDisplay.getRouteIndex()].legs[0].distance.value / 1000*2.4+30 ) + "Mins.";
+          speedestimate.value = Math.round(directionsDisplay.getDirections().routes[directionsDisplay.getRouteIndex()].legs[0].distance.value / 1000*2.4+30 ) + " Mins. Required";
+	 
+ var pricex = document.getElementById("pricex"); // "moo" is the 'id' of the text field
+pricex.value = Math.round(directionsDisplay.getDirections().routes[directionsDisplay.getRouteIndex()].legs[0].distance.value / 1000 * 10 )  ;
+		  
+	
+
+		  
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+		 
+  });
+  
+}
+
+
+initMap();
+
+};
+
+
+
+var displayError = function (error) {
+
+    //get a reference to the HTML element for writing result
+    var locationElement = document.getElementById("locationData");
+
+    //find out which error we have, output message accordingly
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            locationElement.innerHTML = "Permission was denied";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            locationElement.innerHTML = "Location data not available";
+            break;
+        case error.TIMEOUT:
+            locationElement.innerHTML = "Location request timeout";
+            break;
+        case error.UNKNOWN_ERROR:
+            locationElement.innerHTML = "An unspecified error occurred";
+            break;
+        default:
+            locationElement.innerHTML = "Who knows what happened...";
+            break;
+    }
+};
+
+
+
+
+</script>
+
+<script>
+function myAdded() {
+    var x = document.getElementById("snackbar")
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+}
+
+</script>
+
+
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 140; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+function mbtlist2(json) { 
+document.write('<div class="mbtlist2">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+TotalPosts = json.feed.openSearch$totalResults.$t; 
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+ var authorx = document.getElementById("authorx"); // "moo" is the 'id' of the text field
+authorx.value = ListAuthor ;
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'" + sk.replace("?imgmax=800","") + "'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= "'../ext/404.png'"; 
+} 
+//################### Printing List
+var boostlist = "<div  style='padding:13px;'><div  id='mains' class='card animated fadeIn ' style='border-radius:4px;z-index:;animation-delay:0.5s;background-color:#212121'><div class='card-image' style='' ><div   style='animation-delay:0.5s;' class='animated bounceIn node"+[i]+"' ><a class='primary progressive replace' href=" 
++ ListImage+ 
+  "> <img  style='margin-top:-1px;margin-right:-1px;' data-src=" 
+  +ListImage+ 
+  "  ></div></a></div><div class='card-content ' ><span style='cursor: pointer;font-size:42px;font-family:mont;float:right;padding:7px;color:#78d0fe;' class='add'>+</span> <span style='color:#78d0fe;border-radius:200px;padding:4px;cursor: pointer;font-size:42px;align:right;font-family:mont;float:right' class='minus'>-</span> <input style='padding:4px;border-radius:1.5px;background-color:#2a2d36;color:#fff;width:30px;height:20px;' type=number class='qty' id='book-qty' value='1' disabled></input><div   class='add-to-cart' style='background-color:#42e695;border-radius:4px;height:30px;padding:5px;float:right;width:110px;color:white;margin-left:14px;margin-bottom:10px;cursor:pointer'  onclick='myAdded()' class='chip'>   <b  style='background-color:#42e695;color:#000;font-family:mont'> &#8226; Add to cart</b></div><br/><span class='card-title activator grey-text text-darken-4'><a class='mbttitle' style='padding:0px;color:#212121;font-family:mont;align:left' =" 
++ ListUrl+ 
+"><p style='color:white' id='book-name' >" 
++ ListTitle+ 
+"</p>   </a></span><br/><hr class='style12blue' style='margin-bottom:5px'><div style='margin-bottom:0px;margin-top:0px;margin-left:0px;font-size:18px;'> <div style='background-color:#212121   ;color:#212121;height:18.8px;width:30%;font-family:mont;font-size:21.7px' class='chip'> <img width='120px' src='../img/rupeew.png' ><p style='color:white' id='book-content'>" 
++ListContent+ 
+"</p></div> <div style='background-color:#212121  ;color:#42e695;height:32.8px;font-family:mont;font-size:15.7px;padding:0px 7px;float:right' class='chip'>• Recommended</div></div></div></div></div></div>"; 
+$(boost).append(boostlist); 
+
+} 
+
+} 
+
+var ListBlogLink = "http://viofd.blogspot.in/"; 
+var ListCount = 1000; 
+
+document.write("<script src='"+ListBlogLink+"/feeds/posts/default/-/featured?alt=json-in-script&max-results=3&callback=mbtlist2'></"+"script>"); 
+
+
+
+</script>
+
+
+
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 140; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+function mbtlist(json) { 
+document.write('<div class="mbtlist">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+TotalPosts = json.feed.openSearch$totalResults.$t; 
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+ var authorx = document.getElementById("authorx"); // "moo" is the 'id' of the text field
+authorx.value = ListAuthor ;
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'" + sk.replace("?imgmax=800","") + "'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= "'https://lh3.googleusercontent.com/-7vJ5c7TKh3o/WlmBm9EldNI/AAAAAAAALnk/Euwx6glnN0wSKn-kB4sWD8CKyeHABCj6QCHMYCw/s500/slash-birth.png'"; 
+} 
+//################### Printing List
+var listing = "<div  style='padding:13px;'><div  id='mains' class='card animated fadeIn ' style='border-radius:4px;z-index:;animation-delay:0.5s;'><div class='card-image' style='' ><div   style='animation-delay:0.5s;' class='animated bounceIn node"+[i]+"' ><a class='primary progressive replace' href=" 
++ ListImage+ 
+  "> <img  style='margin-top:-1px;margin-right:-1px;' data-src=" 
+  +ListImage+ 
+  "  ></div></a></div><div class='card-content ' ><span style='cursor: pointer;font-size:42px;font-family:mont;float:right;padding:7px;color:#78d0fe;' class='add'>+</span> <span style='color:#78d0fe;border-radius:200px;padding:4px;cursor: pointer;font-size:42px;align:right;font-family:mont;float:right' class='minus'>-</span> <input style='padding:4px;border-radius:1.5px;background-color:#e9e9e9;color:#016aa3;width:30px;height:20px;' type=number class='qty' id='book-qty' value='1' disabled></input><div   class='add-to-cart' style='background-color:#ff6f00;border-radius:4px;height:30px;padding:5px;float:right;width:110px;color:white;margin-left:14px;margin-bottom:10px;cursor:pointer'  onclick='myAdded()' class='chip'>   <b  style='background-color:#ff6f00;color:#fff;font-family:mont'> &#8226; Add to cart</b></div><br/><span class='card-title activator grey-text text-darken-4'><a class='mbttitle' style='padding:0px;color:#212121;font-family:mont;align:left' =" 
++ ListUrl+ 
+"><p id='book-name' >" 
++ ListTitle+ 
+"</p>   </a></span><br/><hr class='style12' style='margin-bottom:5px'><div style='margin-bottom:0px;margin-top:0px;margin-left:0px;font-size:18px;'> <div style='background-color:#fff   ;color:#212121;height:18.8px;width:100%;font-family:mont;font-size:21.7px' class='chip'> <img width='120px' src='https://image.flaticon.com/icons/svg/592/592015.svg' ><p id='book-content'>" 
++ListContent+ 
+"</p></div></div></div></div></div></div>"; 
+$(idli).append(listing); 
+
+} 
+
+} 
+
+var ListBlogLink = "http://viofd.blogspot.in/"; 
+var ListCount = 1000; 
+
+document.write("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=-order&max-results=1000&callback=mbtlist'></"+"script>"); 
+
+
+
+</script>
+
+
+
+
+<script>
+var LS = {
+    get : function( id ) {
+        var item = localStorage.getItem( id );
+        if(item){
+          return item.charAt(0)=='{' ? JSON.parse(item) : item;
+        }else{
+          return {}; 
+        }
+    },	
+    set : function( id, key ) {
+        var k = typeof key=="object" ? JSON.stringify( key ) : key;
+        console.log( k );
+        return localStorage.setItem( id, k );
+    },
+    del : function( id ){
+        return localStorage.removeItem( id );
+    }
+};
+
+
+
+var oU = LS.get('oUser'); // should be a stored Obj
+  var dNow = new Date();
+    var seconds = dNow.getSeconds();
+	
+var localdate=  dNow.getHours() + ':' + dNow.getMinutes() + ":" +  seconds;
+
+function search() {
+if(oU.name){
+  oU.name =  searchterm.value+ " " + "-order";
+  oU.namefordisplay =  searchterm.value;
+  oU.date = new Date().toUTCString();
+  LS.set('oUser', oU); // Store back the whole object
+ 
+ $(idli).html('');
+ $(boost).html('');
+  
+
+$(boost).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q="+oU.name+"+label:boost&max-results=3&callback=mbtlist2'></"+"script>"); 
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q="+oU.name+"&max-results=1000&callback=mbtlist'></"+"script>"); 
+
+ $("#UserActivity").val(function() {
+        return this.value  + " • Searched for " + oU.namefordisplay + "	→ " ;
+    });
+
+ var endofresults = document.getElementById('endofresults');
+  endofresults.innerHTML = "Showing you " + oU.namefordisplay + " Items" ; 
+
+}else{
+ oU.name = searchterm.value+ " " + "-order";
+  oU.namefordisplay =  searchterm.value;
+  oU.date = new Date().toUTCString();
+  LS.set('oUser', oU); // Store back the whole object
+
+ $(idli).html('');
+ $(boost).html('');
+ 
+
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/?alt=json-in-script&q="+oU.name+"&max-results=1000&callback=mbtlist'></"+"script>"); 
+$(boost).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/boost?alt=json-in-script&q="+oU.name+"+label:boost&max-results=3&callback=mbtlist2'></"+"script>"); 
+$(idli).append("<center><div> <p id='endofresults' style='font-family:mont'>End of Results</p> </div></center>"); 
+
+ var endofresults = document.getElementById('endofresults');
+  endofresults.innerHTML = "Showing you " + oU.namefordisplay + " Items" ; 
+
+};
+
+  var endofresults2 = document.getElementById('endofresults2');
+  endofresults2.innerHTML =   oU.namefordisplay ; 
+
+   var x = document.getElementById("horiz");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+       
+    }
+	
+
+
+
+	
+};
+
+/*
+LS.del('oUser');*/
+
+</script>
+
+<script>
+function goall(){
+
+$(idli).html('');
+$(boost).html('');
+
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=-order&max-results=1000&callback=mbtlist'></"+"script>"); 
+$(boost).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/featured?alt=json-in-script&max-results=3&callback=mbtlist2'></"+"script>"); 
+
+ $("#UserActivity").val(function() {
+        return this.value  + " • Explored 1st Category " +  " → " ;
+    });
+}
+
+
+</script>
+
+<script>
+function go1(){
+
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/z10?alt=json-in-script&max-results=1000&callback=mbtlist'></"+"script>"); 
+
+ $("#UserActivity").val(function() {
+        return this.value  + " • Explored 2nd Category " +  " → " ;
+    });
+
+}
+
+
+
+</script>
+
+
+<script>
+function go2(){
+
+
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/z10?alt=json-in-script&max-results=1000&callback=mbtlist'></"+"script>"); 
+
+ $("#UserActivity").val(function() {
+        return this.value  + " • Explored 3rd Category " +  " → " ;
+    });
+	
+}
+
+
+</script>
+
+
+<script>
+function go3(){
+
+
+$(idli).html('');
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/-/pizza?alt=json-in-script&max-results=1000&callback=mbtlist'></"+"script>"); 
+
+ $("#UserActivity").val(function() {
+        return this.value  + " • Explored 4th Category " +  " → " ;
+    });
+	
+	
+}
+
+</script>
+
+
+
+<script>$('button').on("click",function(){  
+  //$('button').not(this).removeClass();
+  $(this).toggleClass('change');
+  
+  });
+</script>
+
+
+<script>
+function myCategory() {
+    var x = document.getElementById("snackbar2")
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+}
+
+</script>
+
+<script>
+function proof() {
+    var x = document.getElementById("snackbar3")
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+}
+
+
+function refreshData()
+{
+ var jokes = [ "Aarav",
+    "Ramesh",
+    "Rushikesh",
+    "Sanskar",
+    "Balak",
+    "Ashwini",
+    "Neha",
+    "Swati",
+    "Arushi",
+    "Pooja",
+    "Mona",
+    "Harsh",
+    "Shiva",
+    "Mohan",
+    "Sandip",
+    "Reyansh",
+    "Mohammed",
+    "Sai",
+    "Arnav",
+    "Aayan",
+    "Krishna",
+    "Samir",
+    "Shravan",
+    "Atharva",
+    "Kiran",
+    "Pranav",
+    "Advaith",
+    "Mina",
+    "Bhagesh",
+    "Kabir",
+    "Atharva",
+    "Ketan",
+    "Prasad",
+    "Vishal",
+    "Arjun" ,
+	"Suresh",
+    "Nitin",
+    "Rahul",
+    "Bhoomi",
+    "Samridhi",
+    "Pankaj",
+    "Ayush",
+    "Gauri",
+    "Nisha",
+    "Diya",
+    "Shweta",
+    "Monu",
+    "Shubham",
+    "Saurabh",
+    "Aradhya",
+    "Yash",
+    "Saurabh",
+    "Tushar",
+    "Mayuri",
+    "Ravi",
+    "Mayur",
+    "Surya",
+    "Manak",
+    "Sonu"
+	];
+    x = 10;  // 5 Seconds
+
+	 var $toastContent = $('<span style="float:left;">&#x25cf; <span id="namx"></span> ordered just now.</span> <span style="color:#42e695" class="icon ion-flash"></span>').add();
+  Materialize.toast($toastContent, 2000);
+    var jokeId = Math.floor((Math.random()*10));
+      var joke = $('#namx');
+      joke.text(jokes[jokeId]);
+
+    setTimeout(refreshData, x*1000);
+	
+}
+
+
+refreshData(); // execute function
+
+
+
+
+</script>
+
+<script>
+
+$('#btnGetValues,#btnGetValues2,#btnGetValues3').click(function () {
+    var allValues = "";
+    
+    $('input[name="ageperwise[1]"]').each(function(){
+        allValues += $(this).val() + "\n";
+    });
+    
+   var input = document.getElementById("moo"); // "moo" is the 'id' friesof the text field
+input.value = allValues ;
+});
+
+
+
+
+var count = 0;
+
+
+$(document).on("click", ".minus", function() {
+
+    if (count - 1 >= 0) {
+        count = $(this).parent().find('#book-qty').val();
+        count = count - 1;
+        $(this).parent().find('#book-qty').val(count);
+    } else {
+        alert('Quantity cannot be less than 1 !');
+    }
+});
+$(document).on("click", ".add", function() {
+    count = parseInt($(this).parent().find('#book-qty').val());
+    count = count + 1;
+    $(this).parent().find('#book-qty').val(count);
+});
+
+
+
+$(document).on("click", ".add-to-cart", function() {
+var ItemName =  $(this).parent().find('#book-name').text();
+var A = $(this).parent().find('#book-qty').val()*$(this).parent().find('#book-content').text()/10 ;
+var B =  $(this).parent().find('#book-qty').val()* $(this).parent().find('#book-content').text();
+var C =  $(this).parent().find('#book-qty').val()* $(this).parent().find('#book-content').text()+$(this).parent().find('#book-qty').val()*$(this).parent().find('#book-content').text()/10 ;
+ $('#menu').addClass('pulse');
+   $('#cart').append('<center><div style="background-color:white;border-radius:4px;margin-right:20px;width:95%;"><input style="background: ;border-bottom: 0px dashed #313131;font-family:mont;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#e83a4c;margin-top:0px;margin-left:10px;padding:14px;cursor:pointer" id="ChildidIntl1" class="onlyforage validate" type="text" name="ageperwise[1]" value="'+ "&#x25cf;  " + $(this).parent().find('#book-name').text()  + "  " +           $(this).parent().find('#book-qty').val() + 'x&#8377;' + $(this).parent().find('#book-content').text() + '  " readonly/><input  style="background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:17px;cursor:pointer;margin-top:-15px;" class="onlyforage validate" type="text" value="'+ "Quantity =  " + $(this).parent().find('#book-qty').val() + "  Unit(s)" +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style="background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;cursor:pointer" class="onlyforage validate" type="text"  value="'+ $(this).parent().find('#book-qty').val()* $(this).parent().find('#book-content').text() + " &#8377;  Total + &#8377 " + $(this).parent().find('#book-qty').val()*$(this).parent().find('#book-content').text()/10 + " charge"  +'" readonly/></form><center><input  style="background-color:#;font-family:mont;font-size:17px;border:0px;width:20%;border-radius:2.5px;line-height:0px;padding:0px;color:#e83a4c;margin-left:5px;margin-top:-62px;cursor:pointer;text-align:right;width:90%" value=" &#8377; ' + C + '" /></center><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#f07d89;margin-top:-15px;" id="removebtn" class="remove_field " onclick="setTimeout(function () {getvalued();reduce();}, 200);">Remove Item</p></div></center>');
+  
+     $("#UserActivity").val(function() {
+        return this.value  + " • Added Item " + ItemName + " to cart" + " → " ;
+    });
+});
+
+
+function fallback() {
+ $('#cart').append('<center><div style="background-color:white;border-radius:4px;margin-right:20px;width:95%;"><input style="background: ;border-bottom: 0px dashed #313131;font-family:mont;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#e83a4c;margin-top:0px;margin-left:10px;padding:14px;cursor:pointer" id="ChildidIntl1" class="onlyforage validate" type="text" name="ageperwise[1]" value="'+ "&#8594;  " + oU.namefordisplay  +'" readonly/><p style="text-align:left;margin-top:-9px;margin-left:21px;">• This item details will be discussed over confirmation call.</p><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#f07d89;margin-top:-15px;" id="removebtn" class="remove_field " onclick="setTimeout(function () {getvalued();reduce();}, 200);">Remove Item</p></div></center>');
+  
+}
+
+
+function reduce() {
+
+     $('#cart').append('<div style="display:none"><form style="" id="myForm2"><input  style="background-color:;display:none;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:0px;cursor:pointer" class="onlyforage validate" type="text"  value="'+ "0" +'" readonly/></form></div></center>');
+
+
+};
+
+
+
+
+
+$("#cart").bind("DOMNodeInserted",function(){
+
+ $('#cart').on("click",".remove_field", function(e){ 
+	   $("#UserActivity").val(function() {
+        return this.value  + " • Removed Item from Cart " +  " → " ;
+    });
+	 //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+		
+		
+    })
+       
+
+
+		
+ 
+       
+		
+	
+  var iSum = 0;
+        $('#myForm input').each( function() {
+           iSum = iSum + parseFloat($(this).val());
+        });
+        $('#calculateSum,#calculateSum2').html( iSum+iSum/10*1 + 1*pricex.value);
+		 $('#beforedelivery').html( iSum+iSum/10*1 );
+        $('#baseprice').html( iSum);
+   var input = document.getElementById("sum"); // "moo" is the 'id' of the text field
+input.value = iSum+iSum/10*1 + 1*pricex.value ;
+
+   var tax = document.getElementById("tax"); // "moo" is the 'id' of the text field
+tax.innerHTML = iSum/10 ;
+
+
+   var quicktax = document.getElementById("quicktax"); // "moo" is the 'id' of the text field
+quicktax.innerHTML ='&#8377;' + (iSum);
+
+   var inpbaseprice = document.getElementById("inpbaseprice"); // "moo" is the 'id' of the text field
+inpbaseprice.value = (iSum);
+
+   var inptax = document.getElementById("inptax"); // "moo" is the 'id' of the text field
+inptax.value = (iSum/10);
+
+var overprice = document.getElementById("overprice");
+  if (pricex.value > 175) {
+ if (overprice.style.display === "none") {
+        overprice.style.display = "block";
+    } 
+  };
+
+  function closeoverprice()
+  {
+       ALERT("SS")
+ 
+  };
+ 
+
+	
+});
+
+function getvalued(){
+
+var allValues = "";
+    
+    $('input[name="ageperwise[1]"]').each(function(){
+        allValues += $(this).val() + "\n";
+    });
+    
+   var input = document.getElementById("moo"); // "moo" is the 'id' of the text field
+input.value = allValues ;
+}
+
+
+</script>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+
+ // progressive-image.js
+if (window.addEventListener && window.requestAnimationFrame && document.getElementsByClassName) window.addEventListener('load', function() {
+
+  // start
+  var pItem = document.getElementsByClassName('progressive replace'), timer;
+
+  window.addEventListener('scroll', scroller, false);
+  window.addEventListener('resize', scroller, false);
+  inView();
+
+
+  // throttled scroll/resize
+  function scroller(e) {
+
+    timer = timer || setTimeout(function() {
+      timer = null;
+      requestAnimationFrame(inView);
+    }, 40);
+
+  }
+
+
+  // image in view?
+  function inView() {
+
+    var wT = window.pageYOffset, wB = wT + window.innerHeight, cRect, pT, pB, p = 0;
+    while (p < pItem.length) {
+
+      cRect = pItem[p].getBoundingClientRect();
+      pT = wT + cRect.top;
+      pB = pT + cRect.height;
+
+      if (wT < pB && wB > pT) {
+        loadFullImage(pItem[p]);
+        pItem[p].classList.remove('replace');
+      }
+      else p++;
+
+    }
+
+  }
+
+
+  // replace with full image
+  function loadFullImage(item) {
+
+    if (!item || !item.href) return;
+
+    // load image
+    var img = new Image();
+    if (item.dataset) {
+      img.srcset = item.dataset.srcset || '';
+      img.sizes = item.dataset.sizes || '';
+    }
+    img.src = item.href;
+    img.className = 'reveal';
+    if (img.complete) addImg();
+    else img.onload = addImg;
+
+    // replace image
+    function addImg() {
+
+      // disable click
+      item.addEventListener('click', function(e) { e.preventDefault(); }, false);
+
+      // add full image
+      item.appendChild(img).addEventListener('animationend', function(e) {
+
+        // remove preview image
+        var pImg = item.querySelector && item.querySelector('img.preview');
+        if (pImg) {
+          e.target.alt = pImg.alt || '';
+          item.removeChild(pImg);
+          e.target.classList.remove('reveal');
+        }
+
+      });
+
+    }
+
+  }
+
+}, false);
+</script>
+
+
+<script>
+function showdiv() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+
+<script>
+
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".submit").click(function(){
+	return false;
+})
+</script>
+
+<script>
+function welcome() {
+    var x = document.getElementById("welcomediv");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+</div>
+</body>
+</html>
