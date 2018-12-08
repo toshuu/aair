@@ -1,0 +1,33 @@
+
+#containerwhitelist [word=mega172]{
+    display:none;
+}
+#containerwhitelist [word=mega150]{
+    display:none;
+}
+#containerwhitelist [word=mega]{
+   display:none;
+}
+#containerwhitelist [word=message]{
+   display:none;
+}
+
+#containerwhitelist [word=contact]{
+   display:none;
+}
+
+#containerwhitelist [word= via]{
+   display:none;
+}
+
+#containerwhitelist [word= new]{
+   display:none;
+}
+
+#containerwhitelist [word= widget]{
+   display:none;
+}
+
+#containerwhitelist [word= Orders]{
+   display:none;
+}
