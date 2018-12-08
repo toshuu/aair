@@ -1,0 +1,10 @@
+input[type=text]{
+  width:200px;
+  padding:8px 10px;
+}
+
+li em {
+  background:#ff6;
+  font-weight:bold;
+  font-style:normal;
+}
