@@ -196,7 +196,7 @@ window.onload = function () {
 
 
    <div id='blocker'></div>
-  <div class="mui-appbar animated fadeIn" id="header1" style='background-color:grey;position:fixed;top:0px;width:100%;z-index:999'>
+  <div class="mui-appbar animated fadeIn" id="header1" style='background-color:grey;position:fixed;top:0px;width:10%;z-index:999'>
   <table width="100%">
     <tr style="vertical-align:middle;">
       <td class="mui--appbar-height" style='font-size:19px;font-family:Poppins;'><ion-icon name="basket" style="margin-left:9px;margin-right:3px;font-size:24px;"></ion-icon><span id='apptitle'>App Title</span></td>
@@ -986,9 +986,9 @@ ListImage= "";
   var filtertemp = newStr.replace(":", "");
 
  var fulltitle = ListTitle.substring(0, 30);;
-var listingsection1= "<div style=' white-space: nowrap;width:100%;display:inline;'><li style='display:inline-block;background-color:;'><div  style='padding:13px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:#90c141;border-radius:4px;width:290px;height:300px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
+var listingsection1= "<div style=' white-space: nowrap;width:100%;display:inline;overflow-x:scroll'><li style='display:inline-block;background-color:;'><div  style='padding:13px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:#90c141;border-radius:4px;width:290px;height:300px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
 +ListImage+
-"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='color:black;position:relative;left:18px;top:18px;overflow-x:' id='book-name' >" 
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='color:black;position:relative;left:18px;top:18px;' id='book-name' >" 
 + ListTitle+ 
 "</p> </a><div style='margin-left:8px;margin-top:20px;white-space:normal;background-color:#fff   ;flat:right;color:#212121;height:18.8px;width:100%;font-family:mont;font-size:21.7px' class='chip'> <img style='margin-left:-5px' src='../img/para.png' > <p id='xx"+temptitle+"' style='font-size:17px;font-family:roboto;color:#212121;margin-bottom:0px;'>"
 + newStr + 
