@@ -995,24 +995,7 @@ ListImage= "";
 
 
 //################### Printing List
- var temptitlepre = ListTitle.substring(0, 4);;
- var temptitlep20pre= ListTitle;
- var temptitle = temptitlepre.replace(" ", "");
- var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
- var newStr = ListTitle.substring(0,6);
-  var filtertemp = newStr.replace(":", "");
 
- var fulltitle = ListTitle.substring(0, 30);;
-var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(147, 0%, 0%, 0.81);border-radius:4px;height:300px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
-+ListImage+
-"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='color:white;position:relative;left:18px;top:18px;font-family:work sans;font-size:18px;' id='book-name' >" 
-+ ListTitle+ 
-"</p> </a>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
-$(idli).append(listingsection1); 
-
-
- 
- 
  if (json.feed.entry[i].content.$t.includes("OSP#"))
  {
  
@@ -1023,11 +1006,30 @@ $(idli).append(listingsection1);
   var str = ListConten;
 var tmpStr  = str.match("OSP#(.*?)#OSP");
 
-var newStr = tmpStr[0];
+var newStrx = tmpStr[0];
 
 $('#xx'+ temptitle).append('bbb');
 
  };
+
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(147, 0%, 0%, 0.81);border-radius:4px;height:300px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:hsla(147, 0%, 0%, 0.5);width:70%;position:relative;top:-100px;right:10px;float:right;padding:0px;z-index:999;margin-bottom:0px;font-size:18px;color:white;border-radius:4px;'>"+newStrx+"</p><p style='color:white;position:relative;left:18px;top:0px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p> </a>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+$(idli).append(listingsection1); 
+
+
+ 
+ 
 
 
 
