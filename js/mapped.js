@@ -134,7 +134,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, 
 	
 		  
     } else {
-      window.alert('Location Detection Problem. You will have to confirm your Delivery charges on phone call.');
+    
     }
 		 
   });
