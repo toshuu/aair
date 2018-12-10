@@ -44,7 +44,15 @@ overflow-x:hidden;
 .sectionheading{
 font-family:poppins;
 margin-left:8px;
-color:white
+font-size:20px;
+color:white;
+padding:4px 4px;
+}
+.titlecompa{
+width:30px;
+float:right;
+margin-right:12px;
+margin-top:12px;
 }
    </style>
    <script src="https://unpkg.com/ionicons@4.4.1/dist/ionicons.js"></script>
@@ -109,12 +117,13 @@ color:white
    
 
    var url_string = window.location.href;var url = new URL(url_string);
-      document.getElementById("section1pre").style.backgroundImage= "linear-gradient(25deg, #"+url.searchParams.get("bc1")+" 30%, hsla(124, 0%, 0%, 0.72) 90%)";
+      document.getElementById("section1pre").style.backgroundImage= "linear-gradient(55deg, #" +url.searchParams.get("bc1")+ " 10%, hsla(4, 0%, 5%, 0.9) 80%)";
+	     document.getElementById("sectionfeatpre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bcf")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
       document.getElementById("section2pre").style.backgroundImage= "linear-gradient(120deg, #"+url.searchParams.get("bc2")+" 20%, hsla(284, 0%, 0%, 0.46) 100%)";
       document.getElementById("section3pre").style.backgroundImage= "linear-gradient(120deg, #"+url.searchParams.get("bc3")+" 20%, hsla(284, 0%, 0%, 0.46) 100%)";
       document.getElementById("section4pre").style.backgroundImage= "linear-gradient(120deg, #"+url.searchParams.get("bc4")+" 20%, hsla(284, 0%, 0%, 0.46) 100%)";
 	  
-	  document.getElementById("section1title").innerHTML = "<p>• "+url.searchParams.get("collect1")+"</p>";
+	  document.getElementById("section1title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect1")+"</p>";
 	  document.getElementById("section2title").innerHTML = "<p>• "+url.searchParams.get("collect2")+"</p>";
 	  document.getElementById("section3title").innerHTML = "<p>• "+url.searchParams.get("collect3")+"</p>";
 	  document.getElementById("section4title").innerHTML = "<p>• "+url.searchParams.get("collect4")+"</p>";
@@ -301,8 +310,17 @@ window.onload = function () {
 
 
  
+<div style='width:100%;;padding:4px 0px;margin-top:-15px;' id='sectionfeatpre'>
+
+<img src='https://image.flaticon.com/icons/png/512/616/616656.png' class='titlecompa' />
+<h5 class='sectionheading' id='sectionfeattitle' > • Featured </h5>
+<div style='overflow-x:scroll;overflow-y:hidden;' id='idli'> </div>
+
+	</div>
+ 
 <div style='width:100%;;padding:4px;' id='section1pre'>
 
+<img src='https://image.flaticon.com/icons/png/512/616/616656.png' class='titlecompa' />
 <h5 class='sectionheading' id='section1title' > • New Arrival </h5>
 
 <div style='overflow-x:scroll;overflow-y:hidden;' id='idli'> </div>
@@ -1032,9 +1050,9 @@ var hotlabel = tmpStr[1];
   var filtertemp = newStr.replace(":", "");
 
  var fulltitle = ListTitle.substring(0, 30);;
-var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(147, 0%, 0%, 0.81);border-radius:4px;height:300px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(285, 58%, 100%, 0.45);border-radius:4px;height:300px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
 +ListImage+
-"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><p style='color:white;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
 + ListTitle+ 
 "</p> </a>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
 $(idli).append(listingsection1); 
