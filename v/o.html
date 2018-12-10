@@ -117,13 +117,13 @@ margin-top:12px;
    
 
    var url_string = window.location.href;var url = new URL(url_string);
-      document.getElementById("section1pre").style.backgroundImage= "linear-gradient(55deg, #" +url.searchParams.get("bc1")+ " 10%, hsla(4, 0%, 5%, 0.9) 80%)";
-	     document.getElementById("sectionfeatpre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bcf")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
-	     document.getElementById("sectionaipre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bcs")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
-	     document.getElementById("section2pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc2")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
-      document.getElementById("section3pre").style.backgroundImage= "linear-gradient(120deg, #"+url.searchParams.get("bc3")+" 20%, hsla(284, 0%, 0%, 0.46) 100%)";
-      document.getElementById("section4pre").style.backgroundImage= "linear-gradient(120deg, #"+url.searchParams.get("bc4")+" 20%, hsla(284, 0%, 0%, 0.46) 100%)";
-	  
+      document.getElementById("section1pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc1")+ " 10%, hsla(21, 100%, 0%, 0.88) 70%)";
+	      document.getElementById("sectionfeatpre").style.backgroundImage= "linear-gradient(120deg, #"+url.searchParams.get("bcf")+" 20%, hsla(284, 0%, 0%, 0.46) 75%)";
+       document.getElementById("sectionaipre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bcs")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+       document.getElementById("section2pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc2")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+	     document.getElementById("section3pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc3")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+	     document.getElementById("section4pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc4")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+	    
 	  document.getElementById("section1title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect1")+"</p>";
 	  document.getElementById("section2title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect2")+"</p>";
 	  document.getElementById("section3title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect3")+"</p>";
@@ -141,6 +141,11 @@ setTimeout(function() {
 function fixscroll(){
 setTimeout(function() {window.scrollTo(00, 11);}, 100)
 }
+
+   var url_string = window.location.href;var url = new URL(url_string);
+ if(url.searchParams.get("collect1")=="Something"){
+        alert();
+    }
 
 
    </script>
