@@ -344,7 +344,7 @@ window.onload = function () {
 <img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
 <h5 class='sectionheading' id='section2title' > • Loading... </h5>
 
-<div style='overflow-x:scroll;overflow-y:hidden;' id='idli'> </div>
+<div style='overflow-x:scroll;overflow-y:hidden;' id='idlixxx'> </div>
 
 	</div>
 	
@@ -352,7 +352,7 @@ window.onload = function () {
 <img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
 <h5 class='sectionheading' id='section3title' > • Loading... </h5>
 
-<div style='overflow-x:scroll;overflow-y:hidden;' id='idli'> </div>
+<div style='overflow-x:scroll;overflow-y:hidden;' id='idlixx'> </div>
 
 	</div>
 	
@@ -360,7 +360,7 @@ window.onload = function () {
 <img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
 <h5 class='sectionheading' id='section4title' > • Loading... </h5>
 
-<div style='overflow-x:scroll;overflow-y:hidden;' id='idli'> </div>
+<div style='overflow-x:scroll;overflow-y:hidden;' id='idlix'> </div>
 
 	</div>
 
@@ -538,16 +538,15 @@ window.onload = function () {
 
 
 <div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:hidden;z-index:999;position:fixed;top:00px;background-color:#ddd;
- background-blend-mode: multiply;opacity:.5;width:100%;height:100%;display:none;" id="postopen">
+ background-blend-mode: multiply;opacity:.5;width:100%;height:90%;display:none;" id="postopen">
 
  
  <div class="holder"> <div class="barpdf">
 <img src="../img/back.png" class="button" style="width:30px;height:30px;position:fixed;left:20px;margin-top:12px;border-radius:200px" onclick="postclosefunction()" style="color:white">
 <p onclick="postopenfunction()" class="waves-effect waves-light" style="font-size:15px;font-family:roboto mono;margin-left:28px;margin-top:20px;margin-right:28px;float:right;color:black;font-family:poppins">Details</p></div>
-<div id="postopenframediv" ><iframe name="postopenframe" id="postopenframe" style="margin-top:0px;" class="disableRightClick" width="100%" height="630" src="" frameborder="0" allow="autoplay; encrypted-media" seamless></iframe></div></div>
+<div id="postopenframediv" ><iframe name="postopenframe" id="postopenframe" style="background-image: url('../img/loading.gif');background-repeat:no-repeat;background-size:50px; background-position: center; margin-top:0px;" class="disableRightClick" width="100%" height="630" src="" frameborder="0" allow="autoplay; encrypted-media" seamless></iframe></div></div>
  
-   <button style="width:100%;position:fixed;bottom:0px;margin-bottom:0px;background-color:teal" class="mui-btn mui-btn--raised mui-btn--danger" onclick='toastbuy()'>BUY NOW</button>
- </div>	
+   </div>	
  
  
  </div>
@@ -764,7 +763,7 @@ var C =  $(this).parent().find('#defprice').val()*1 + $(this).parent().find('#de
 $(document).on("click", ".showbuyingoptions", function() {
 var tohide =  $(this).parent().find('#bookxx2').text();
  var tohide = $(this).parent().find('#bookxx2').val();
- 
+
 
  document.getElementById(tohide).style.display="block";
 
@@ -1125,7 +1124,7 @@ var comparision = tmpStr[1];
  var fulltitle = ListTitle.substring(0, 30);;
 var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
 +ListImage+
-"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><a href='http://x.com' target='postopenframe' onclick='postopenfunction();'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><a href="+ListUrl+" onclick='postopenfunction()' target='postopenframe'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
 + ListTitle+ 
 "</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
 + ratings+ 
@@ -1135,11 +1134,39 @@ var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%
 + comparision+ 
 "</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
 + saves+ 
-"</p> </a>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:relative;z-index:999;margin-top:-70.5px;border:0px;display:none;float:right;padding:0px;background-color:#90c141 ;color:white;height:100%;width:100%;padding:13px 19px;font-size:15px;font-family:poppins;overflow-x:scroll;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+ListTag+")</p><input id='defprice' style='display:none' value="+ListTag+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:block;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
 $(idli).append(listingsection1); 
 
 
  
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ1#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ1#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("1", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly+'"></input><p id="varprice" style="display:none">'+priceonly+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+priceonly+'</p></button>');
+
+ };
+
  
 
 
