@@ -142,10 +142,8 @@ function fixscroll(){
 setTimeout(function() {window.scrollTo(00, 11);}, 100)
 }
 
-   var url_string = window.location.href;var url = new URL(url_string);
- if(url.searchParams.get("collect1")=="Something"){
-        alert();
-    }
+
+
 
 
    </script>
@@ -316,20 +314,20 @@ window.onload = function () {
 
 
  
-<div style='width:100%;;padding:14px 0px;margin-top:-15px;' id='sectionfeatpre'>
+<div style='width:100%;;padding:14px 0px;margin-top:-15px;display:none' id='sectionfeatpre'>
 
 <img src='https://image.flaticon.com/icons/png/512/616/616656.png' class='titlecompa' style='margin-top:8px;' />
 <h5 class='sectionheading' id='sectionfeattitle' style='margin-top:6px;'> • Featured </h5>
-<div style='overflow-x:scroll;overflow-y:hidden;' id='idli'> </div>
+<div style='overflow-x:hidden;overflow-y:hidden;' id='sectionfeat'> </div>
 
 	</div>
  
-<div style='width:100%;;padding:14px 0px;' id='sectionaipre'>
+<div style='width:100%;;padding:14px 0px;display:none' id='sectionaipre'>
 
 <img src='https://image.flaticon.com/icons/svg/148/148819.svg' class='titlecompa' style='margin-top:8px;' />
 <h5 class='sectionheading' id='sectionaititle' > • Suggested </h5>
 
-<div style='overflow-x:scroll;overflow-y:hidden;' id='idli'> </div>
+<div style='overflow-x:scroll;overflow-y:hidden;' id='sectionai'> </div>
 
 	</div>
 
@@ -546,7 +544,7 @@ window.onload = function () {
  <div class="holder"> <div class="barpdf">
 <img src="../img/back.png" class="button" style="width:30px;height:30px;position:fixed;left:20px;margin-top:12px;border-radius:200px" onclick="postclosefunction()" style="color:white">
 <p onclick="postopenfunction()" class="waves-effect waves-light" style="font-size:15px;font-family:roboto mono;margin-left:28px;margin-top:20px;margin-right:28px;float:right;color:black;font-family:poppins">Details</p></div>
-<div id="postopenframediv" ><iframe name="postopenframe" id="postopenframe" style="background-image: url('../img/loading.gif');background-repeat:no-repeat;background-size:50px; background-position: center; margin-top:0px;" class="disableRightClick" width="100%" height="630" src="" frameborder="0" allow="autoplay; encrypted-media" seamless></iframe></div></div>
+<div id="postopenframediv" ><iframe name="postopenframe" id="postopenframe" style="margin-top:0px;" class="disableRightClick" width="100%" height="630" src="" frameborder="0" allow="autoplay; encrypted-media" seamless></iframe></div></div>
  
    <button style="width:100%;position:fixed;bottom:0px;margin-bottom:0px;background-color:teal" class="mui-btn mui-btn--raised mui-btn--danger" onclick='toastbuy()'>BUY NOW</button>
  </div>	
@@ -1127,9 +1125,9 @@ var comparision = tmpStr[1];
  var fulltitle = ListTitle.substring(0, 30);;
 var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
 +ListImage+
-"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><a href='http://x.com' target='postopenframe' onclick='postopenfunction();'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
 + ListTitle+ 
-"</p><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
 + ratings+ 
 "</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
 + price+ 
@@ -1198,6 +1196,214 @@ if (! localStorage.noFirstVisit) {
 </script>
     
    
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistfeat(json) {
+
+document.write('<div class="mbtlistfeat">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p> </a>  </span><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+$(sectionfeat).append(listingsection1); 
+
+
+ 
+ 
+
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+
+
+</script>
+    
+   <script>
+<!-- ``` -->
+   var url_string = window.location.href;var url = new URL(url_string);
+ if(url.searchParams.get("showfeat")=="true"){
+  document.getElementById("sectionfeatpre").style.display="block";
+   $(sectionfeat).html("");
+$(sectionfeat).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=featured&max-results=1000&callback=mbtlistfeat'></"+"script>");
+
+    };
+	
+	 if(url.searchParams.get("showai")=="true"){
+  document.getElementById("sectionaipre").style.display="block";
+   $(sectionai).html("");
+$(sectionai).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=violety&max-results=1000&callback=mbtlistai'></"+"script>");
+
+    }
+	
+	
+   </script>
  
  
 <script>
