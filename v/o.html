@@ -38,7 +38,7 @@ overflow-x:hidden;
     right:0;
     width:100%;
     height:57px;
-    z-index:999;	background-color:#ddd
+    z-index:999;	background-color:#fff0f2
 }
 
 .sectionheading{
@@ -129,7 +129,7 @@ margin-top:12px;
 	  document.getElementById("section3title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect3")+"</p>";
 	  document.getElementById("section4title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect4")+"</p>";
     
-	  
+
    
 setTimeout(function() {
      fixscroll()
@@ -305,8 +305,8 @@ window.onload = function () {
 
 
  
- 	<div    id="btnGetValues" onclick="showdiv();$('#menu').removeClass('pulse');" class="fab-message" style="z-index:999">
-   <a  id='menu' onclick="getvalued();" style="position:fixed;bottom:60px;right:30px;background-color:#212121;;z-index:999999" class="btn-floating btn-large waves-effect waves-light "> <ion-icon style="font-size:22.5px;padding:17px;z-index:999999;margin-right:8px;"  name="cart"></ion-icon></a>
+ 	<div    id="btnGetValues" onclick="showdiv();$('#menu').removeClass('pulse');" class="fab-message" style="z-index:99999">
+   <a  id='menu' onclick="getvalued();" style="position:fixed;bottom:60px;right:30px;background-color:#212121;;z-index:999999" class="btn-floating btn-large waves-effect waves-light "> <ion-icon style="font-size:22.5px;padding:17px;z-index:999999999;margin-right:8px;"  name="cart"></ion-icon></a>
         
  
           
@@ -438,8 +438,15 @@ window.onload = function () {
   
  </div>
 
+<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:9999;position:fixed;bottom:00px;background-color:black;;
+ background-blend-mode: multiply;opacity:.5;width:100%;height:140px;display:none;border-top:4px inset #90c141;" id="toastbuy">
 
-<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:999;position:fixed;top:00px;background-color:black;;
+<img src='https://image.flaticon.com/icons/svg/291/291201.svg' style='width:45px;height:45px;margin-left:auto;margin-right:auto;left:0px;right:0px;top:20px;position:absolute;' /><br>
+<center><p style='font-family:work sans;color:white;position:relative;bottom:-55px;font-size:16px;'>Successfully Added to cart.</p></center>
+</div>
+
+
+<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:9999;position:fixed;top:00px;background-color:black;;
  background-blend-mode: multiply;opacity:.5;width:100%;height:100%;display:none;" id="myDIV">
 
  
@@ -542,7 +549,7 @@ window.onload = function () {
 
  
  <div class="holder"> <div class="barpdf">
-<img src="../img/back.png" class="button" style="width:30px;height:30px;position:fixed;left:20px;margin-top:12px;border-radius:200px" onclick="postclosefunction()" style="color:white">
+<img src="../img/back.png" class="button hideoptions" style="width:30px;height:30px;position:fixed;left:20px;margin-top:12px;border-radius:200px" onclick="postclosefunction();" style="color:white">
 <p onclick="postopenfunction()" class="waves-effect waves-light" style="font-size:15px;font-family:roboto mono;margin-left:28px;margin-top:20px;margin-right:28px;float:right;color:black;font-family:poppins">Details</p></div>
 <div id="postopenframediv" ><iframe name="postopenframe" id="postopenframe" style="background-image: url('../img/loading.gif');background-repeat:no-repeat;background-size:50px; background-position: center; margin-top:0px;" class="disableRightClick" width="100%" height="630" src="" frameborder="0" allow="autoplay; encrypted-media" seamless></iframe></div></div>
  
@@ -666,12 +673,11 @@ $(postopenframediv).html('<iframe src="" name="postopenframe" id="postopenframe"
 
 function toastbuy(){
 
+document.getElementById("toastbuy").style.display="block";
+setTimeout(function () {document.getElementById("toastbuy").style.display="none";}, 2500); 
 
- postclosefunction();
- $('body').css({'overflow':'hidden'});
-$('.showbuyingoptions').addClass('pulse');
 
-setTimeout(function () {$('.showbuyingoptions').removeClass('pulse');$('body').css({'overflow':'scroll'});}, 2000); 
+
 
 }
 </script>
@@ -769,7 +775,18 @@ var tohide =  $(this).parent().find('#bookxx2').text();
 
 
 
+$(document).on("click", ".hideoptions", function() {
+
+
+ document.getElementById(tohide).style.display="none";
+
+
+
 });
+
+
+});
+
 
 
 
@@ -1124,7 +1141,7 @@ var comparision = tmpStr[1];
  var fulltitle = ListTitle.substring(0, 30);;
 var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
 +ListImage+
-"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><a href="+ListUrl+" onclick='postopenfunction()' target='postopenframe'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
 + ListTitle+ 
 "</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
 + ratings+ 
@@ -1134,7 +1151,7 @@ var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%
 + comparision+ 
 "</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
 + saves+ 
-"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#90c141 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+ListTag+")</p><input id='defprice' style='display:none' value="+ListTag+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:block;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
 
 $(idli).append(listingsection1); 
 
@@ -1165,7 +1182,122 @@ var nameonly = tmpStr3[1];
 var nameonly2 = nameonly.replace("ZZ", "");
 var price2 = priceonly.replace("ZZ", "");
 
-$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1" onclick="toastbuy()"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ2#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ2#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("2", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1" onclick="toastbuy()"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ3#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ3#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("3", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1" onclick="toastbuy()"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ if (json.feed.entry[i].content.$t.includes("ZZ4#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ4#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("4", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1" onclick="toastbuy()"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ5#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ5#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("5", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1" onclick="toastbuy()"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
 
  };
 
