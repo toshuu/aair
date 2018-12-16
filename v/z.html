@@ -1,0 +1,3113 @@
+<!doctype html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../js/jquery.min.js"></script>
+ <link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="../js/mui.min.js"></script>  
+    <script src="../js/mapped.js"></script>  
+	<link href="../css/materialize.min.css" rel="stylesheet" type="text/css" />
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMLGI3cZB5QdVYTAmXrVuNsApX9GXYupQ&callback=initMap"></script>
+	<link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript"  src="../js/jquery.easing.min.js"></script>
+<script type="text/javascript"  src="../js/materialize.min.js"></script>
+
+   <style>
+   @import url(https://fonts.googleapis.com/css?family=Poppins);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+@import url(https://fonts.googleapis.com/css?family=Work+Sans);
+   p{font-family:poppins}
+   body{background-color:#212121;
+overflow-x:hidden;
+	   width:100%;
+  }
+   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ddd;
+    opacity: 0.7; /* Firefox */
+}
+
+
+.barpdf{
+    position:absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:57px;
+    z-index:999;	background-color:#fff0f2;
+	border-bottom:2px solid #3e0e14;
+}
+
+.sectionheading{
+font-family:poppins;
+margin-left:8px;
+font-size:18px;
+color:white;
+padding:4px 4px;
+}
+.titlecompa{
+width:30px;
+float:right;
+margin-right:12px;
+margin-top:12px;
+}
+   </style>
+   <script src="https://unpkg.com/ionicons@4.4.1/dist/ionicons.js"></script>
+
+
+  <script>
+   function init(){  
+  
+   oU.mui1 = document.getElementById("mui1").value;
+   oU.mui2 = document.getElementById("mui2").value;
+   oU.txt = document.getElementById("txt").value;
+   oU.base = document.getElementById("base").value;
+   oU.pac = document.getElementById("pac").value;
+   oU.sac = document.getElementById("sac").value;
+   oU.target = document.getElementById("target").value;
+   oU.pactxt = document.getElementById("pactxt").value;
+   oU.targeticons = document.getElementById("targeticons").value;
+   oU.targettxt = document.getElementById("targettxt").value;
+   oU.tax = document.getElementById("tax").value;
+   oU.dt = document.getElementById("dt").value;
+   oU.pt = document.getElementById("pt").value;
+
+    
+   oU.cat1 =  document.getElementById("cat1").value;
+   oU.cat2 =  document.getElementById("cat2").value;
+   oU.cat3 =  document.getElementById("cat3").value;
+   oU.cat4 =  document.getElementById("cat4").value;
+   oU.open = document.getElementById("open").value;
+   document.getElementById("authorx").value = ushop;
+   
+   LS.set('oUser', oU);
+   document.getElementById("opt1").innerHTML = oU.cat1;
+   document.getElementById("opt2").innerHTML = oU.cat2;
+   document.getElementById("opt3").innerHTML = oU.cat3;
+   document.getElementById("opt4").innerHTML = oU.cat4;
+     document.getElementById("apptitle").innerHTML = '<span style="margin-left:7px;">'+apptitle+'</span>';
+
+   document.body.style.backgroundColor = '#'+oU.base;
+   document.body.style.color = '#'+oU.txt;
+    document.getElementById("block1").style.backgroundColor = '#'+oU.target;
+    document.getElementById("block2").style.backgroundColor = '#'+oU.target;
+    document.getElementById("block3").style.backgroundColor = '#'+oU.target;
+    document.getElementById("block4").style.backgroundColor = '#'+oU.target;
+	document.getElementById("text1").value = document.getElementById("cat1").value;
+	document.getElementById("text2").value = document.getElementById("cat2").value;
+	document.getElementById("text3").value = document.getElementById("cat3").value;
+	document.getElementById("text4").value = document.getElementById("cat4").value;
+	
+   document.getElementById("header1").style.backgroundColor = '#'+oU.pac; 
+   document.getElementById("header1").style.color = '#'+oU.pactxt; 
+   document.getElementById("text1").style.color = '#'+oU.targettxt;
+   document.getElementById("text2").style.color = '#'+oU.targettxt;
+   document.getElementById("text3").style.color = '#'+oU.targettxt;
+   document.getElementById("text4").style.color = '#'+oU.targettxt;
+   document.getElementById("icon1").style.color = '#'+oU.targeticons;
+   document.getElementById("icon2").style.color = '#'+oU.targeticons;
+   document.getElementById("icon3").style.color = '#'+oU.targeticons;
+   document.getElementById("icon4").style.color = '#'+oU.targeticons;
+   document.getElementById("block1").style.color = '#'+oU.pactxt;
+   document.getElementById("block2").style.color = '#'+oU.pactxt;
+   document.getElementById("block3").style.color = '#'+oU.pactxt;
+   document.getElementById("block4").style.color = '#'+oU.pactxt;
+   document.getElementById("header2").style.backgroundColor = '#' + oU.sac;
+   document.getElementById("header1").style.color = '#'+oU.pactxt;  
+   
+
+   var url_string = window.location.href;var url = new URL(url_string);
+      document.getElementById("section1pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc1")+ " 10%, hsla(21, 100%, 0%, 0.88) 70%)";
+	      document.getElementById("sectionfeatpre").style.backgroundImage= "linear-gradient(120deg, #"+url.searchParams.get("bcf")+" 20%, hsla(284, 0%, 0%, 0.46) 75%)";
+       document.getElementById("sectionaipre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bcs")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+       document.getElementById("section2pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc2")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+	     document.getElementById("section3pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc3")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+	     document.getElementById("section4pre").style.backgroundImage=  "linear-gradient(55deg, #" +url.searchParams.get("bc4")+ " 10%, hsla(21, 100%, 0%, 0.88) 80%)";
+	    
+	  document.getElementById("section1title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect1")+"</p>";
+	  document.getElementById("section2title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect2")+"</p>";
+	  document.getElementById("section3title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect3")+"</p>";
+	  document.getElementById("section4title").innerHTML = "<p style='font-family:work+sans'>• "+url.searchParams.get("collect4")+"</p>";
+    
+    if(!url.searchParams.get("tax") ){
+      oU.tax = "9999999999" ;LS.set('oUser', oU);
+    }; 
+	if(!url.searchParams.get("dt") ){
+      oU.dt = "2.4" ;LS.set('oUser', oU);
+    };
+    if(!url.searchParams.get("pt") ){
+       oU.pt = "30" ;LS.set('oUser', oU);
+    };
+   
+setTimeout(function() {
+     fixscroll()
+    }, 1000);
+   
+   }  
+   document.write("<script src='../air/info.js'></"+"script>"); 
+
+function fixscroll(){
+setTimeout(function() {window.scrollTo(00, 11);}, 100)
+}
+
+
+
+
+
+   </script>
+ 
+ <script>
+ $(document).keypress(function(e){
+    if(e.keyCode == 8){
+        alert();
+    }
+});
+
+window.onload = function () {
+    if (typeof history.pushState === "function") {
+        history.pushState("jibberish", null, null);
+        window.onpopstate = function () {
+            history.pushState('newjibberish', null, null);
+            // Handle the back (or forward) buttons here
+            // Will NOT handle refresh, use onbeforeunload for this.
+        };
+    }
+    else {
+        var ignoreHashChange = true;
+        window.onhashchange = function () {
+            if (!ignoreHashChange) {
+                ignoreHashChange = true;
+                window.location.hash = Math.random();
+                // Detect and redirect change here
+                // Works in older FF and IE9
+                // * it does mess with your hash symbol (anchor?) pound sign
+                // delimiter on the end of the URL
+            }
+            else {
+                ignoreHashChange = false;   
+            }
+        };
+    }
+}
+ </script>
+  <Script>
+  $(document).ready(function() {
+        window.history.pushState(null, "", window.location.href);        
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+    });
+	
+	
+	  $(document).ready(function() {
+    $('#msform').submit(function(e) {
+        var name = $('#name')
+        var email = $('#email')
+        var message = $('#mobile')
+      
+        if(name.val() == "" || email.val() == "" || message.val() == "") {
+          $('.submit-fail').fadeToggle(400);
+          return false;
+        }
+        else {
+          $.ajax({
+            method: 'POST',
+            url: 'https://usebasin.com/f/49aa7d090029.json',
+            data: $('#msform').serialize(),
+            datatype: 'json'
+          });
+          e.preventDefault();
+          $(this).get(0).reset();
+          $('.submit-success').fadeToggle(3400);
+		 
+		  setTimeout(function() { location.href="http://aair.netlify.com/v/t.html";}, 1200)
+        }
+      });
+    
+    $('.submit-fail, .submit-success').click(function() {
+      $(this).hide();
+    })
+  });
+  </script>
+<link rel="stylesheet" type="text/css" href="../css/stepsfood.css">
+<link rel="stylesheet" type="text/css" href="../css/styleblack.css">
+
+  </head>
+  <body style="" onclick="" onload='getUserLocation();showorders();init();'>
+
+
+   <div id='blocker'></div>
+  <div class="mui-appbar animated fadeIn" id="header1" style='background-color:grey;position:fixed;top:0px;width:100%;z-index:999'>
+  <table width="100%">
+    <tr style="vertical-align:middle;">
+      <td class="mui--appbar-height" style='font-size:19px;font-family:Poppins;'><ion-icon name="basket" style="margin-left:9px;margin-right:3px;font-size:24px;"></ion-icon><span id='apptitle'>App Title</span></td>
+      <td class="mui--appbar-height" align="right" style='font-size:24px;font-family:Poppins;' onclick="opener()" ><ion-icon name="search" style="margin-right:0px;margin-top:6px;"></ion-icon></td>
+      <td class="mui--appbar-height" align="right" style='font-size:24px;font-family:Poppins;' onclick='contact()'><ion-icon name="chatboxes" style="margin-right:0px;margin-top:6px;"></ion-icon></td>
+      <td class="mui--appbar-height" align="right" style='font-size:24px;font-family:Poppins;' onclick='user()'><ion-icon name="contact" style="margin-right:10px;margin-top:6px;"></ion-icon></td>
+    </tr>
+  </table>
+</div>
+<div class="mui-dropdown animated fadeIn"  style='width:100%;position:fixed;top:65px;z-index:999'>
+  <button  class="mui-btn mui-btn--primary" data-mui-toggle="dropdown" id="header2" style='width:100%;padding:0px;margin:0px;border-radius:-0px;height:40px;;background-color:grey'>
+    categories
+    <span class="mui-caret"></span>
+  </button>
+  <ul class="mui-dropdown__menu"  style='width:100%;'>
+    <li><a id='opt1' href="#" onclick='oU.open=oU.cat1;LS.set("oUser", oU);updatefeed();' >Option 1</a></li>
+    <li><a id='opt2' href="#" onclick='oU.open=oU.cat2;LS.set("oUser", oU);updatefeed();' >Option 2</a></li>
+    <li><a id='opt3' href="#" onclick='oU.open=oU.cat3;LS.set("oUser", oU);updatefeed();' >Option 3</a></li>
+    <li><a id='opt4' href="#" onclick='oU.open=oU.cat4;LS.set("oUser", oU);updatefeed();' >Option 4</a></li>
+  </ul>
+</div>  
+
+    <center>
+
+<div class=" animated fadeInDown"  style="display:none;overflow-x:hidden;animation-duration:0.4s;overflow-y:hidden;z-index:999999;position:fixed;top:00px;left:0px;background-color:#344955;width:100%;height:110px;" id="opener">
+<div class="holder"> <div class="">
+<img src="../img/back.png" class="waves-effect waves-light" style="width:32px;height:32px;position:fixed;left:20px;margin-top:18px;" onclick="opener()" >
+<p style="font-size:15px;font-family:mont;margin-left:79px;margin-top:23px;float:left;color:white;font-family:poppins">Search Products</p></div>
+<input id='searchterm' style='margin-left:12px;width:70%;color:white' placeholder='Search Here ..'>
+</center>
+  
+<!-- Main Content -->
+<div id='' style='width:100%;height:400px;background-color:'>
+<br/><br/><br/>
+<br/><br/><br/>
+
+<div class="mui-container-fluid " style='position:absolute;margin-left:auto;margin-right:auto;left:22px;right:0px;display:none;'>
+  <div class="mui-row " style='color:black'><br>
+    <div class="mui-col-xs-6 waves-effect waves-light" id='block1' style='border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon1" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input id='text1' style='font-family:poppins;background-color:transparent;border:0px;' disabled>  </div>
+    <div class="mui-col-xs-6 " id='block2' style='border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon2" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input id='text2' style='font-family:poppins;background-color:transparent;border:0px;' disabled></div>     
+
+	<div class="mui-col-xs-6" id='block3' style='background-color:grey;border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon3" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input id='text3' style='font-family:poppins;background-color:transparent;border:0px;' disabled></div>
+    <div class="mui-col-xs-6" id='block4' style='background-color:grey;border-radius:5px;height:120px;margin:2px;width:46%;'><ion-icon id="icon4" style="font-size:50px;margin-top:10px;" name="pricetags"></ion-icon><br> <input id='text4' style='font-family:poppins;background-color:transparent;border:0px;' disabled></div>  
+  </div>
+</div>
+
+<form name="myform" id="myform" style='display:none'>
+<input type="text" name="mui1" id="mui1" >
+<input type="text" name="mui2" id="mui2">
+
+<input type="text" name="cat1" id="cat1">
+<input type="text" name="cat2" id="cat2">
+<input type="text" name="cat3" id="cat3">
+<input type="text" name="cat4" id="cat4">
+
+<input type="text" id="txt">
+<input type="text" id="base">
+<input type="text" id="pac">
+<input type="text" id="sac">
+<input type="text" id="target">
+<input type="text" id="pactxt">
+<input type="text" id="targettxt">
+<input type="text" id="tax">
+<input type="text" id="dt">
+<input type="text" id="pt">
+<input type="text" id="targeticons">
+<input type="text" id="open">
+</form>
+
+
+
+
+
+
+
+
+
+ 
+ 	<div    id="btnGetValues" onclick="showdiv();$('#menu').removeClass('pulse');" class="fab-message" style="z-index:99999">
+   <a  id='menu' onclick="getvalued();" style="position:fixed;bottom:60px;right:30px;background-color:#212121;;z-index:999999" class="btn-floating btn-large waves-effect waves-light "> <ion-icon style="font-size:22.5px;padding:17px;z-index:999999999;margin-right:8px;"  name="cart"></ion-icon></a>
+        
+ 
+          
+</div>
+
+
+ 
+<div style='width:100%;;padding:14px 0px;margin-top:-15px;display:none' id='sectionfeatpre'>
+
+<img src='https://image.flaticon.com/icons/png/512/616/616656.png' class='titlecompa' style='margin-top:8px;' />
+<h5 class='sectionheading' id='sectionfeattitle' style='margin-top:6px;'> • Featured </h5>
+<div style='overflow-x:scroll;overflow-y:hidden;' id='sectionfeat'> </div>
+
+	</div>
+ 
+<div style='width:100%;;padding:14px 0px;display:none' id='sectionaipre'>
+
+<img src='https://image.flaticon.com/icons/svg/148/148819.svg' class='titlecompa' style='margin-top:8px;' />
+<h5 class='sectionheading' id='sectionaititle' > • Suggested </h5>
+
+<div style='overflow-x:scroll;overflow-y:hidden;' id='sectionai'> </div>
+
+	</div>
+
+
+
+<div style='width:100%;;padding:14px 0px;display:none' id='section1pre'>
+
+<img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
+<h5 class='sectionheading' id='section1title' > • Loading... </h5>
+
+<div style='overflow-x:scroll;overflow-y:hidden;' id='section1'> </div>
+
+	</div>
+
+<div style='width:100%;padding:14px 0px;display:none' id='section2pre'>
+<img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
+<h5 class='sectionheading' id='section2title' > • Loading... </h5>
+
+<div style='overflow-x:scroll;overflow-y:hidden;' id='section2'> </div>
+
+	</div>
+	
+<div style='width:100%;padding:14px 0px;display:none' id='section3pre'>
+<img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
+<h5 class='sectionheading' id='section3title' > • Loading... </h5>
+
+<div style='overflow-x:scroll;overflow-y:hidden;' id='section3'> </div>
+
+	</div>
+	
+<div style='width:100%;padding:14px 0px;display:none' id='section4pre'>
+<img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
+<h5 class='sectionheading' id='section4title' > • Loading... </h5>
+
+<div style='overflow-x:scroll;overflow-y:hidden;' id='section4'> </div>
+
+	</div>
+
+
+<div style='width:100%;padding:14px 0px;display:none' id='sectionidlipre'>
+<img src='https://image.flaticon.com/icons/png/512/149/149016.png' class='titlecompa' />
+<h5 class='sectionheading' id='idlititle' > • New Arrivals </h5>
+
+<div style='overflow-y:hidden;overflow-x:hidden;position:absolute:left:0px;right:0px;margin-left:auto;margin-right:auto;' id='idli'> </div>
+
+	</div>
+
+
+<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:999;position:fixed;top:00px;background-color:black;opacity:.5;width:100%;height:100%;display:none;" id="user">
+
+<center><img src='../img/order.png' onclick='user()' style='height:43px;width:auto;margin-top:17px;' /><h5 style='color:white;font-size:17px;margin-top:0px'>Your Orders</h5><div class="divider" style="background-color:#565656"></div></center>
+
+ <button style="z-index:999;width:100%;position:fixed;bottom:0px;margin-bottom:0px;" class="mui-btn mui-btn--raised mui-btn--primary" onclick='user()'>Close</button>
+
+<div style='padding:25px;' > 
+      <div class="card blue-grey darken-4" >
+        <div class="card-content white-text"><p>Order Number</p>
+          <span class="card-title" id='order-title-1'></span>
+          <p class='info' id='order-desc-1'>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+		
+          <a id='track1' href="#">This is a link</a>
+        
+        </div>
+      </div>
+
+      <div class="card blue-grey darken-4">
+        <div class="card-content white-text"><p>Order Number</p>
+          <span class="card-title" id='order-title-2'></span>
+          <p id='order-desc-2'>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a id='track2' href="#">This is a link</a>
+        
+        </div>
+      </div>
+	  
+      <div class="card blue-grey darken-4">
+        <div class="card-content white-text"><p>Order Number</p>
+          <span class="card-title" id='order-title-3'></span>
+          <p id='order-desc-3'>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a id='track3' href="#">This is a link</a>
+        
+        </div>
+      </div>
+	  
+      <div class="card blue-grey darken-4">
+        <div class="card-content white-text"><p>Order Number</p>
+          <span class="card-title" id='order-title-4'></span>
+          <p id='order-desc-4'>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a id='track4' href="#">This is a link</a>
+        
+        </div>
+      </div>
+	  
+      <div class="card blue-grey darken-4">
+        <div class="card-content white-text"><p>Order Number</p>
+          <span class="card-title" id='order-title-5'></span>
+          <p id='order-desc-5'>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a id='track5' href="#">This is a link</a>
+       
+        </div>
+      </div>
+	  
+	  
+</div>
+  
+  
+ </div>
+
+<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:9999;position:fixed;bottom:00px;background-color:black;;
+ background-blend-mode: multiply;opacity:.5;width:100%;height:140px;display:none;border-top:4px inset #90c141;" id="toastbuy" onclick='hidetoastbuy()'>
+
+<img src='https://image.flaticon.com/icons/svg/291/291201.svg' style='width:45px;height:45px;margin-left:auto;margin-right:auto;left:0px;right:0px;top:20px;position:absolute;' /><br>
+<center><p style='font-family:work sans;color:white;position:relative;bottom:-55px;font-size:16px;'>Successfully Added to cart.</p></center>
+</div>
+
+
+<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:auto;z-index:9999;position:fixed;top:00px;background-color:black;;
+ background-blend-mode: multiply;opacity:.5;width:100%;height:100%;display:none;" id="myDIV">
+
+ 
+<div style='padding:10px;' id='cart'> <center><img src='https://image.flaticon.com/icons/png/512/859/859270.png' onclick='showdiv()' style='width:auto;height:32px;display:inline;margin-top:10px' /><h5 style='color:white;font-size:17px;margin-top:0px'>&nbsp;Your Cart</h5><div class="divider" style="background-color:#565656;margin-left:-10px;width:110%"></div><br></center></div>
+  
+  
+ 
+  <div style="color:#455a64;font-size:14px;background-color:#fff;border-radius:2px;margin-right:20px;margin-bottom:10px;margin-left:10px;padding:10px;"> <b style="float:right"> Rs. </b> Total =<span style="color:#eb5261;font-size:14px; font-weight: bold;text-align:right;float:right;margin-right:9px; " id="calculateSum"></span>
+  <br/>
+   <b style="float:right"> &nbsp;</b>Tax = <span style="color:#455a64;font-size:14px; font-weight: bold;float:right;margin-right:-4px; " id="taxinfo"></span><br>
+   <b style="float:right"> &nbsp; Rs. </b>Delivery Charges = <span style="color:#455a64;font-size:14px; font-weight: bold;float:right " id="price2"></span>
+   
+  <hr class='style14' style='margin-bottom:5px'>
+ <b style="float:right"> Rs. </b>Final Total =<span style="color:#455a64;font-size:14px; font-weight: bold;text-align:right;float:right;margin-right:9px;font-family:roboto mono " id="calculatesum2"></span>
+  </div>
+  
+ 
+ <div style="font-size:20px;background-color:#455a64;color:#fff;border-radius:0px;margin-right:20px;margin-left:10px;padding:10px;"><label style="font-size:20px;color:white" onclick="calc()" for="" style="margin-left:9px;color:yellow">Final Total is &#8377;</label>
+        <span style="font-family:roboto mono" id="redtotal">0</span> <p style="font-size:14px;margin-left:0px;color:white">You are <span style="color:#fff;font-size:14px; font-weight: bold; " id="kms"></span> away from seller.</p><div id='redcard' style='display:none'><p style="font-size:14px;margin-left:0px;color:white">&#8377; <span style="color:#fff;font-size:14px; font-weight: bold; " id="baseprice"></span> base price included.</p><p style="font-size:14px;margin-left:0px;color:white">&#8377; <span style="color:#fff;font-size:14px; font-weight: bold; " id="price"></span> delivery charges included.</p><p style="font-size:14px;margin-left:0px;color:white"> &#8377;  <span id="tax" style="font-weight:bold;font-size:14px;margin-left:0px;color:white"></span> service charge included. </p></div></div>
+  
+
+   
+   <div style="color:#fff;font-size:14px;background-color:#455a64;border-radius:2px;margin-right:20px;margin-bottom:10px;margin-top:10px;margin-left:10px;padding:10px;">
+   Avg. Time Needed = <span style="color:#fff;font-size:14px; font-weight: bold; " id="avgtime"></span>
+  </div>
+   
+ 
+  <center><div style="width:92%;margin-left:10px;font-family:mont;font-size:20px;color:white;float:left" id="output">
+	<section style="width:100%;height:0px;background-color:yellow;" id="map-canvas"></section>
+ <p style="font-size:0px;">Distance :<span id="a2b"></span> </p>
+	 <p  style="font-size:0.1px;"> &nbsp; </p>
+	 <p  style="font-size:0.1px;"> &nbsp; <span id=""></span> </p>
+
+</div>
+</center>
+
+
+ <!-- multistep form -->
+<form id="msform" name="AAAA-SellEn" >
+
+  <!-- fieldsets -->
+  <fieldset>
+   
+
+
+   
+	
+    <input type="button" name="next" style="border-radius:200px;background-color:#64ffda ;color:black;width:70%;" class="next action-button"  onclick="getvalued();ordernofunc();" value="Confirm" />
+  
+	
+  </fieldset>
+  
+ 
+
+
+  <fieldset>
+    <h2 class="fs-title" style="font-family:poppins;color:white">Personal Details</h2>
+    <h3 class="fs-subtitle" style="font-family:Poppins;color:white">Please tell us about yourself</h3>
+	<input type="hidden" name="_format" value="plain" />
+	<input class="pure-input-1" style="font-family:roboto mono" name="_next" type="hidden" value="http://jovial-agnesi-bfb6c3.bitballoon.com/thank-you-food.html" />
+	 <input class="pure-input-1" name="_subject" type="hidden" value="Food Order" />
+    <input type="text" style="border:solid white;color:white" name="name" id="name" placeholder="Your Name" required/>
+	 <input type="text"  style="border:solid white;color:white" name="mobile" id="mobile" placeholder="Mobile number (Without +91)" required/>
+	  <input type="text"  style="border:solid white;color:white" name="email" id="email" placeholder="Email" />
+	 <textarea  style="height:80px;border:solid white;color:white" name="address" id="address" placeholder="Your Address" required></textarea>
+      <input type="" class="pure-input-1" id="moolat" name="Detected-Latitude" type="text" />
+	   <input type="" class="pure-input-1" id="moolong" name="Detected-Longitude" type="text" />
+	   <input type="" class="pure-input-1" id="moolatlong" name="Order Location" type="text" />
+	      <input type=""  style="border:solid white;color:black" class="pure-input-1" id="orderno"  name="Order Number" placeholder="Order No" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="moo" name="Products-Ordered" placeholder="Products-Ordered" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="whatsapp" name="Whatsapp" placeholder="Whatsapp" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="speedestimate" name="speedestimate" placeholder="speedestimate" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="authorx" name="Store-Name" placeholder="Store-Name" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="time" name="Time" placeholder="Time" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="inpbaseprice" name="Base-Price" placeholder="Base-Price" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="inptax" name="Service-Tax" placeholder="Service-Tax" type="text" />
+   <input type=""  style="border:solid white;color:black" class="pure-input-1" id="pricex" name="Delivery-Charges" placeholder="Delivery-Charges" type="text" />
+   <input type="" class="pure-input-1" id="sum" name="Bill Total" placeholder="Bill Total" type="text" />
+   
+
+   
+
+     <button  style="background-color:#e83a4c;color:white;padding:9px;border:0px;font-family:poppins;border-radius:1.4px" onclick='updateuser()' class="pure-button pure-button-primary">Order Now</button><br/><br/><br/><br/><br/>
+  
+	
+  </fieldset>
+  
+ 
+   
+         
+</form>
+ 
+ 
+ </div>
+
+
+
+
+<div class=" animated fadeInUp"  style="overflow-x:hidden;animation-duration:0.4s;overflow-y:hidden;z-index:999;position:fixed;top:00px;background-color:#ddd;
+ background-blend-mode: multiply;opacity:.5;width:100%;height:90%;display:none;" id="postopen">
+
+ 
+ <div class="holder"> <div class="barpdf">
+<img src="../img/back.png" class="button hideoptions" style="width:30px;height:30px;position:fixed;left:20px;margin-top:12px;border-radius:200px" onclick="postclosefunction();" style="color:white">
+<p onclick="postopenfunction()" class="waves-effect waves-light" style="font-size:15px;font-family:roboto mono;margin-left:28px;margin-top:20px;margin-right:28px;float:right;color:black;font-family:poppins">Details</p></div>
+<div id="postopenframediv" ><iframe name="postopenframe" id="postopenframe" style="background-image: url('../img/loading.gif');background-repeat:no-repeat;background-size:50px; background-position: center; margin-top:0px;" class="disableRightClick" width="100%" height="630" src="" frameborder="0" allow="autoplay; encrypted-media" seamless></iframe></div></div>
+ 
+   </div>	
+ 
+ 
+ </div>
+
+  
+<script>
+
+function opener() {
+    var x = document.getElementById("opener");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+	
+}
+
+</script>
+	
+<script>
+function showdiv() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<script>
+function user() {
+    var x = document.getElementById("user");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+		document.getElementById("order-title-1").innerHTML = oU.ordertitle1;
+		document.getElementById("order-desc-1").innerHTML = oU.desc1;
+		document.getElementById("order-title-2").innerHTML = oU.ordertitle2;
+		document.getElementById("order-desc-2").innerHTML = oU.desc2;
+		document.getElementById("order-title-3").innerHTML = oU.ordertitle3;
+		document.getElementById("order-desc-3").innerHTML = oU.desc3;
+		document.getElementById("order-title-4").innerHTML = oU.ordertitle4;
+		document.getElementById("order-desc-4").innerHTML = oU.desc4;
+		document.getElementById("order-title-5").innerHTML = oU.ordertitle5;
+		document.getElementById("order-desc-5").innerHTML = oU.desc5;
+		
+		document.getElementById("track1").innerHTML = '<a href="https://api.whatsapp.com/send?phone='+uwano+'&text=Track:'+oU.ordertitle1+'"> Ask about package </a>';
+		document.getElementById("track2").innerHTML = '<a href="https://api.whatsapp.com/send?phone='+uwano+'&text=Track:'+oU.ordertitle2+'"> Ask about package </a>';
+		document.getElementById("track3").innerHTML = '<a href="https://api.whatsapp.com/send?phone='+uwano+'&text=Track:'+oU.ordertitle3+'"> Ask about package </a>';
+		document.getElementById("track4").innerHTML = '<a href="https://api.whatsapp.com/send?phone='+uwano+'&text=Track:'+oU.ordertitle4+'"> Ask about package </a>';
+		document.getElementById("track5").innerHTML = '<a href="https://api.whatsapp.com/send?phone='+uwano+'&text=Track:'+oU.ordertitle5+'"> Ask about package </a>';
+	
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<script>
+function updateuser() {
+oU.ordertitle5 = oU.ordertitle4;LS.set('oUser', oU); 
+ oU.ordertitle4 = oU.ordertitle3;LS.set('oUser', oU); 
+ oU.ordertitle3 = oU.ordertitle2;LS.set('oUser', oU); 
+ oU.ordertitle2 = oU.ordertitle1;LS.set('oUser', oU); 
+ oU.ordertitle1 = "#"+document.getElementById("orderno").value; LS.set('oUser', oU); 
+oU.desc5 = oU.desc4;LS.set('oUser', oU); 
+oU.desc4 = oU.desc3;LS.set('oUser', oU); 
+oU.desc3 = oU.desc2;LS.set('oUser', oU); 
+oU.desc2 = oU.desc1;LS.set('oUser', oU); 
+  oU.desc1 = "• Bill = &#8377;" + document.getElementById("sum").value + "<BR>" + "• Name = "  + document.getElementById("name").value  + "</br> • Time = " +  document.getElementById("time").value + "</br> • Products = " +  document.getElementById("moo").value ;
+  LS.set('oUser', oU); 
+
+    document.getElementById("whatsapp").value="https://api.whatsapp.com/send?phone=91"+ document.getElementById("mobile").value +"&text=" + "Dear " + document.getElementById("name").value + ", We have received your order" +  " (Order #"  + document.getElementById("orderno").value + ") " +  "for following items and we are actively processing it. It will be delivered soon to your address." + document.getElementById("moo").value + ". The Address you provided was : •" + document.getElementById("address").value;
+  
+  $('#name').val('@@' + $('#name').val() + '@@');
+  $('#mobile').val('@@borno' + $('#mobile').val() + '@@');
+  $('#address').val('@@corno' + $('#address').val() + '@@');
+  $('#moolat').val('@@eorno' + $('#moolat').val() + '@@');
+  $('#moolong').val('@@forno' + $('#moolong').val() + '@@');
+  $('#moolatlong').val('@@gorno' + $('#moolatlong').val() + '@@');
+  $('#orderno').val('@@orno' + $('#orderno').val() + '@@');
+  $('#moo').val('@@horno' + $('#moo').val() + '@@');
+  $('#speedestimate').val('@@lorno' + $('#speedestimate').val() + '@@');
+  $('#inpbaseprice').val('@@iorno' + $('#inpbaseprice').val() + '@@');
+  $('#inptax').val('@@jorno' + $('#inptax').val() + '@@');
+  $('#pricex').val('@@korno' + $('#pricex').val() + '@@');
+  $('#sum').val('@@billto' + $('#sum').val() + '@@');
+  
+  }
+</script>
+
+<script>
+function postopenfunction() {
+ $('body').css({'overflow':'hidden'});
+ 
+    var x = document.getElementById("postopen");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+function postclosefunction() {
+ $('body').css({'overflow':'scroll'});
+ 
+$(postopenframediv).html('');
+$(postopenframediv).html('<iframe src="" name="postopenframe" id="postopenframe" style="background-image:url(../img/loading.gif);background-repeat:no-repeat;background-attachment: fixed; background-position: center center; ;background-size:50px auto;margin-top:0px; " width="100%" height="630"  scroll="yes" frameborder="no" > sss</iframe>');
+
+
+  var x = document.getElementById("postopen");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function toastbuy(){
+
+document.getElementById("toastbuy").style.display="block";
+setTimeout(function () {document.getElementById("toastbuy").style.display="none";}, 2500); 
+
+
+
+
+}
+function hidetoastbuy(){
+
+document.getElementById("toastbuy").style.display="none";
+
+
+
+
+}
+</script>
+
+
+<script type="text/javascript">
+var idx = document.getElementById("id");
+var data=location.search;
+if(data) {
+    data=location.search.substring(1); // remove the '?'
+    data=data.split('&');
+    var pairs={};
+    for(var i=0; i<data.length; i++){
+        var tmp=data[i].split('=');
+        pairs[tmp[0]]=tmp[1];
+    	}
+    var f = document.myform;
+    for (var i in pairs) {
+        if(f.elements[i]) {f.elements[i].value = pairs[i];}
+        }
+    }
+	
+	
+	function contact(){
+	window.open("https://api.whatsapp.com/send?phone="+ uwano , "url")
+	}
+</script>
+  
+
+<script>
+var LS = {
+    get : function( id ) {
+        var item = localStorage.getItem( id );
+        if(item){
+          return item.charAt(0)=='{' ? JSON.parse(item) : item;
+        }else{
+          return {}; 
+        }
+    },	
+    set : function( id, key ) {
+        var k = typeof key=="object" ? JSON.stringify( key ) : key;
+        console.log( k );
+        return localStorage.setItem( id, k );
+    },
+    del : function( id ){
+        return localStorage.removeItem( id );
+    }
+};
+
+
+var oU = LS.get('oUser'); // should be a stored Obj
+
+if(!oU.name){
+  oU.date = new Date().toUTCString();
+  LS.set('oUser', oU); // Store back the whole object
+}else{
+  var msgDis = document.getElementById('msgDisplay');
+  msgDis.innerHTML = "Hi " + oU.name + " Welcome back!" + " Date: " + oU.date;  
+}
+
+ 
+/*
+LS.del('oUser');*/
+
+</script>
+
+
+<script>
+
+
+
+var count = 0;
+
+
+$(document).on("click", ".add-to-cart", function() {
+
+var C =  $(this).parent().find('#defprice').val()*1 + $(this).parent().find('#defprice').val()/10 ;
+ $('#menu').addClass('pulse');
+
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#defname').val()    +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#defname').val() + "(" + "Default" + ")" + " &#8377;" + $(this).parent().find('#defprice').val()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#defprice').val()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#defprice').val() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage optional-tax " type="text"  value="'+ '• Tax=&#8377;' + $(this).parent().find('#defprice').val()/oU.tax +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center;margin-top:-25px;" id="removebtn" class="remove_field  waves-effect waves-lightwaves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+ document.getElementById(tohide).style.display="block";
+});
+
+
+
+
+$(document).on("click", ".showbuyingoptions", function() {
+var tohide =  $(this).parent().find('#bookxx2').text();
+ var tohide = $(this).parent().find('#bookxx2').val();
+
+
+ document.getElementById(tohide).style.display="block";
+
+
+
+$(document).on("click", ".hideoptions", function() {
+
+
+ document.getElementById(tohide).style.display="none";
+
+
+
+});
+
+
+});
+
+
+
+
+$(document).on("click", ".add-to-cart1", function() {
+toastbuy();
+  var A = $(this).parent().find('#book-qty').val()*$(this).parent().find('#book-content').text()/oU.tax ;
+var B =  $(this).parent().find('#book-price').text();
+var C =  Math.round($(this).parent().find('#varprice').text()*1 + $(this).parent().find('#varprice').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv').val()  + "("  + $(this).parent().find('#varnameiv').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv').val() + "(" + $(this).parent().find('#varnameiv').val() + ")" + " &#8377;" + $(this).parent().find('#varprice').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice').text()*1/Math.round(oU.tax)) +'" readonly/> <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;;background-color:#455a64   ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+
+$(document).on("click", ".add-to-cart2", function() {
+
+toastbuy();
+
+var C =  Math.round($(this).parent().find('#varprice2').text()*1 + $(this).parent().find('#varprice2').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv2').val()  + "("  + $(this).parent().find('#varnameiv2').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv2').val() + "(" + $(this).parent().find('#varnameiv2').val() + ")" + " &#8377;" + $(this).parent().find('#varprice2').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice2').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice2').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice2').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+
+$(document).on("click", ".add-to-cart3", function() {
+
+var C =  Math.round($(this).parent().find('#varprice3').text()*1 + $(this).parent().find('#varprice3').text()/oU.tax);
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv3').val()  + "("  + $(this).parent().find('#varnameiv3').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv3').val() + "(" + $(this).parent().find('#varnameiv3').val() + ")" + " &#8377;" + $(this).parent().find('#varprice3').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice3').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice3').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice3').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+
+$(document).on("click", ".add-to-cart4", function() {
+toastbuy();
+var C =  Math.round($(this).parent().find('#varprice4').text()*1 + $(this).parent().find('#varprice4').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv4').val()  + "("  + $(this).parent().find('#varnameiv4').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv4').val() + "(" + $(this).parent().find('#varnameiv4').val() + ")" + " &#8377;" + $(this).parent().find('#varprice4').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice4').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice4').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice4').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+$(document).on("click", ".add-to-cart5", function() {
+toastbuy();
+var C =  Math.round($(this).parent().find('#varprice5').text()*1 + $(this).parent().find('#varprice5').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv5').val()  + "("  + $(this).parent().find('#varnameiv5').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv5').val() + "(" + $(this).parent().find('#varnameiv5').val() + ")" + " &#8377;" + $(this).parent().find('#varprice5').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice5').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice5').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice5').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+$(document).on("click", ".add-to-cart6", function() {
+var C =  Math.round($(this).parent().find('#varprice6').text()*1 + $(this).parent().find('#varprice6').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv6').val()  + "("  + $(this).parent().find('#varnameiv6').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv6').val() + "(" + $(this).parent().find('#varnameiv6').val() + ")" + " &#8377;" + $(this).parent().find('#varprice6').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice6').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice6').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice6').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+$(document).on("click", ".add-to-cart7", function() {
+var C =  Math.round($(this).parent().find('#varprice7').text()*1 + $(this).parent().find('#varprice7').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv7').val()  + "("  + $(this).parent().find('#varnameiv7').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv7').val() + "(" + $(this).parent().find('#varnameiv7').val() + ")" + " &#8377;" + $(this).parent().find('#varprice7').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice7').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice7').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice7').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+$(document).on("click", ".add-to-cart8", function() {
+var C =  Math.round($(this).parent().find('#varprice8').text()*1 + $(this).parent().find('#varprice8').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv8').val()  + "("  + $(this).parent().find('#varnameiv8').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv8').val() + "(" + $(this).parent().find('#varnameiv8').val() + ")" + " &#8377;" + $(this).parent().find('#varprice8').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice8').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice8').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice8').text()*1/Math.round(oU.tax)) +'" readonly/> <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+$(document).on("click", ".add-to-cart9", function() {
+var C =  Math.round($(this).parent().find('#varprice9').text()*1 + $(this).parent().find('#varprice9').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv9').val()  + "("  + $(this).parent().find('#varnameiv9').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv9').val() + "(" + $(this).parent().find('#varnameiv9').val() + ")" + " &#8377;" + $(this).parent().find('#varprice9').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice9').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice9').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice9').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+$(document).on("click", ".add-to-cart10", function() {
+var C =  Math.round($(this).parent().find('#varprice10').text()*1 + $(this).parent().find('#varprice10').text()/oU.tax) ;
+ $('#menu').addClass('pulse');
+
+   $('#cart').append(' <div style="color:#eb5261;font-size:14px;background-color:#263238;border-radius:4px;margin-right:10px;margin-bottom:10px;padding:21px;"><input style="font-family:Poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" name="ageperwise[1]" value="'+ "● "   + $(this).parent().find('#tiv10').val()  + "("  + $(this).parent().find('#varnameiv10').val() + ")" +  '  " readonly/><input style="font-family:poppins;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:3px;padding:2px;cursor:pointer;display:none" id="ChildidIntl1" class="onlyforage " type="text" name="products-ordered-info[1]" value="'+ " ● " + $(this).parent().find('#tiv10').val() + "(" + $(this).parent().find('#varnameiv10').val() + ")" + " &#8377;" + $(this).parent().find('#varprice10').text()  +'" readonly/><form style="width:93%;margin-top:0px;" id="myForm"><input  style=";display:none;background-color:;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:5px;margin-top:-15px;margin-right:-15px;cursor:pointer" class="onlyforage " type="text"  value="'+ 1* $(this).parent().find('#varprice10').text()  +'" readonly/></form><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Price=&#8377;' + $(this).parent().find('#varprice10').text() +'" readonly/><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer" id="ChildidIntl1" class="onlyforage " type="text"  value="'+ '• Tax=&#8377;' + Math.round($(this).parent().find('#varprice10').text()*1/Math.round(oU.tax)) +'" readonly/>  <div class="divider" style="background-color:#565656;margin-top:-10px;"></div><input style="font-family:roboto mono;border-bottom: 0px dashed #313131;font-size:17px;width:93%;height:15px;border-radius:1.5px;color:#fff;margin-top:0px;margin-left:15px;padding:2px;cursor:pointer;margin-top:7px;" id="ChildidIntl1" class="onlyforage " type="text" value="'+ '• Total=&#8377;' + C +'" readonly/><hr class="style14" style="margin-bottom:13px;"/><p style="padding:10px;color:#fff;margin-top:-25px;background-color:#455a64 ;border-radius:4px;width:140px;text-align:center" id="removebtn" class="remove_field  waves-effect waves-light" onclick="setTimeout(function () {getvalued();reduce();oreduce()}, 200);"><ion-icon style="font-size:15px;" name="trash"></ion-icon> Remove Item</p></div>');
+ 
+});
+
+
+$(document).on("click", ".red-color", function() {
+document.getElementById("colorselection").value = 'Red';
+alert(temptitle);
+});
+$(document).on("click", ".green-color", function() {
+document.getElementById("colorselection").value = 'Green';
+});
+$(document).on("click", ".blue-color", function() {
+document.getElementById("colorselection").value = 'Blue';
+});
+$(document).on("click", ".pink-color", function() {
+document.getElementById("colorselection").value = 'Pink';
+});
+
+
+
+
+
+function reduce() {
+
+     $('#cart').append('<div style="display:none"><form style="" id="myForm2"><input  style="background-color:;display:none;font-family:mont;font-size:17px;border:0px;width:100%;border-radius:1.5px;line-height:0px;padding:0px;color:black;margin-left:0px;cursor:pointer" class="onlyforage validate" type="text"  value="'+ "0" +'" readonly/></form></div></center>');
+
+
+};
+
+
+
+
+
+$("#cart").bind("DOMNodeInserted",function(){
+
+ $('#cart').on("click",".remove_field", function(e){ 
+	 
+	 //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+		
+		
+    })
+       
+
+
+		
+ 
+       
+		
+	
+  var iSum = 0;
+
+        $('#myForm input').each( function() {
+           iSum = iSum + parseFloat($(this).val());
+        });
+        $('#calculateSum,#calculateSum2').html( iSum );
+
+        $('#baseprice').html( iSum);
+   var input = document.getElementById("sum"); // "moo" is the 'id' of the text field
+input.value = iSum + 1*pricex.value + 1*Math.round(iSum/oU.tax) ;
+
+   var inpbaseprice = document.getElementById("inpbaseprice"); // "moo" is the 'id' of the text field
+inpbaseprice.value = (iSum);
+ 
+
+ var inptax = document.getElementById("inptax"); // "moo" is the 'id' of the text field
+inptax.value = (Math.round(iSum/oU.tax));
+
+   var tax = document.getElementById("tax"); // "moo" is the 'id' of the text field
+tax.innerHTML = iSum/10 ;
+
+   var tax = document.getElementById("tax"); // "moo" is the 'id' of the text field
+tax.innerHTML = iSum/10 ;
+
+   var taxinfo = document.getElementById("taxinfo"); // "moo" is the 'id' of the text field
+taxinfo.innerHTML = Math.round(iSum/oU.tax) + "  Rs.";
+
+
+
+
+		 
+	
+});
+
+function getvalued(){
+
+var allValues = "";
+    
+    $('input[name="products-ordered-info[1]"]').each(function(){
+        allValues += $(this).val() + "\n";
+    });
+    
+   var input = document.getElementById("moo"); // "moo" is the 'id' of the text field
+input.value = allValues ;
+
+
+
+document.getElementById("redtotal").innerHTML = document.getElementById("sum").value*1 ;
+document.getElementById("calculatesum2").innerHTML = document.getElementById("sum").value*1;
+
+
+
+
+
+}
+
+
+function ordernofunc(){
+	var max = parseInt(000000);
+  var min = parseInt(900000);
+  var answer = document.getElementById("orderno");
+  
+	answer.value = Math.floor(Math.random() * (max - min + 1) + min);
+	
+
+}
+
+
+
+function oreduce(){
+document.getElementById("redtotal").innerHTML = document.getElementById("sum").value*1 ;
+document.getElementById("calculatesum2").innerHTML = document.getElementById("sum").value*1;
+}
+</script>
+
+
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistfeat(json) {
+
+document.write('<div class="mbtlistfeat">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+
+
+ if (json.feed.entry[i].content.$t.includes("ZZ1#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ1#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("1", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ2#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ2#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("2", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv2" value="'+nameonly2+'"></input><p id="varprice2" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv2" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart2"><ion-icon name="pricetag"></ion-icon> <p id="varname2" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname2" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ3#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ3#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("3", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv3" value="'+nameonly2+'"></input><p id="varprice3" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv3" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart3"><ion-icon name="pricetag"></ion-icon> <p id="varname3" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname3" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ if (json.feed.entry[i].content.$t.includes("ZZ4#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ4#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("4", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv4" value="'+nameonly2+'"></input><p id="varprice4" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv4" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart4"><ion-icon name="pricetag"></ion-icon> <p id="varname4" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname4" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ5#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ5#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("5", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv5" value="'+nameonly2+'"></input><p id="varprice5" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv5" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart5"><ion-icon name="pricetag"></ion-icon> <p id="varname5" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname5" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ 
+
+
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
+$(sectionfeat).append(listingsection1); 
+
+
+ 
+ 
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+
+</script>
+    
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistsection1(json) {
+
+document.write('<div class="mbtlistsection1">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+
+
+ 
+
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
+$(section1).append(listingsection1); 
+
+
+ 
+ 
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+
+</script>
+    
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistsection2(json) {
+
+document.write('<div class="mbtlistsection2">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+
+ 
+
+
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
+$(section2).append(listingsection1); 
+
+
+ 
+ 
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+
+</script>
+    
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistsection3(json) {
+
+document.write('<div class="mbtlistsection3">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+
+ 
+
+
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
+$(section3).append(listingsection1); 
+
+
+ 
+ 
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+
+</script>
+    
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistsection4(json) {
+
+document.write('<div class="mbtlistsection4">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+
+ 
+
+
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
+$(section4).append(listingsection1); 
+
+
+ 
+ 
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+
+</script>
+    
+    
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlistsectionai(json) {
+
+document.write('<div class="mbtlistsectionai">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+
+ if (json.feed.entry[i].content.$t.includes("ZZ1#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ1#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("1", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ2#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ2#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("2", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv2" value="'+nameonly2+'"></input><p id="varprice2" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv2" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart2"><ion-icon name="pricetag"></ion-icon> <p id="varname2" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname2" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ3#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ3#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("3", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv3" value="'+nameonly2+'"></input><p id="varprice3" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv3" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart3"><ion-icon name="pricetag"></ion-icon> <p id="varname3" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname3" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ if (json.feed.entry[i].content.$t.includes("ZZ4#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ4#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("4", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv4" value="'+nameonly2+'"></input><p id="varprice4" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv4" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart4"><ion-icon name="pricetag"></ion-icon> <p id="varname4" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname4" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ5#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ5#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("5", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv5" value="'+nameonly2+'"></input><p id="varprice5" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv5" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart5"><ion-icon name="pricetag"></ion-icon> <p id="varname5" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname5" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<div style=' white-space: nowrap;display:inline;width:100%;overflow-x:scroll;padding:4px 6px;'><a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><li style='display:inline-block;width:65%;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;height:308px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;height:172px;'  src="
++ListImage+
+"> </div></div><span class='card-title activator grey-text text-darken-4'><p style='background-color:red;position:relative;padding:4px;top:-160px;right:10px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p> </a>  </span><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
+$(sectionai).append(listingsection1); 
+
+
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+
+</script>
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<script type="text/javascript" async>
+var ListBlogLink = window.location.hostname; 
+var ListCount = 0; 
+var ChrCount = 30; 
+var TitleCount = 1000; 
+var ImageSize = 500; 
+//################ Function Start 
+
+function mbtlist(json) {
+
+document.write('<div class="mbtlist">'); 
+for (var i = 0; i < ListCount; i++) 
+{ 
+//################### Variables Declared 
+var listing= ListImage = ListUrl = ListTitle = ListImage = ListContent = ListConten = ListAuthor = ListTag = ListDate = ListUpdate = ListComments = thumbUrl = TotalPosts = sk = ListMonth = Y = D = M = m = YY = DD = MM = mm = TT =  "";
+//################### Category 
+if (json.feed.entry[i].category != null) 
+{ 
+for (var k = 0; k < json.feed.entry[i].category.length; k++) { 
+    ListTag += json.feed.entry[i].category[k].term; 
+if(k < json.feed.entry[i].category.length-1) 
+{ ListTag += ", ";} 
+} 
+}
+//################### URL 
+for (var j = 0; j < json.feed.entry[i].link.length; j++) { 
+      if (json.feed.entry[i].link[j].rel == 'alternate') { 
+        break; 
+      } 
+    } 
+ListUrl= "'" + json.feed.entry[i].link[j].href + "'";
+//################### Info 
+
+TotalPosts = json.feed.openSearch$totalResults.$t;
+
+if (json.feed.entry[i].title!= null) 
+{ 
+ListTitle= json.feed.entry[i].title.$t.substr(0, TitleCount); 
+} 
+if (json.feed.entry[i].thr$total) 
+{ 
+ListComments= json.feed.entry[i].thr$total.$t; 
+} 
+ListAuthor= json.feed.entry[i].author[0].name.$t.split(" "); 
+ListAuthor=ListAuthor.slice(0, 1).join(" ");
+
+//################### Content Check
+ListConten = json.feed.entry[i].content.$t; 
+ListContent= ListConten.replace(/(<([^>]+)>)/ig,"").substring(0, ChrCount);
+//################### Date Format
+ListMonth= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ListDate= json.feed.entry[i].published.$t.substring(0,10);
+                         Y = ListDate.substring(0, 4); 
+                        m = ListDate.substring(5, 7); 
+                         D = ListDate.substring(8, 10); 
+                         M = ListMonth[parseInt(m - 1)];                       
+ListUpdate= json.feed.entry[i].updated.$t.substring(0, 16);
+                         YY = ListUpdate.substring(0, 4); 
+                        mm = ListUpdate.substring(5, 7); 
+                         DD = ListUpdate.substring(8, 10); 
+                         TT = ListUpdate.substring(11, 16); 
+                         MM = ListMonth[parseInt(mm - 1)];   
+//################### Thumbnail Check 
+// YouTube scan
+if (json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null) 
+{
+    var youtube_id = json.feed.entry[i].content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop(); 
+    
+    if (youtube_id.length == 11) { 
+        var ListImage = "'//img.youtube.com/vi/"+youtube_id+"/0.jpg'"; 
+        } 
+}
+else if (json.feed.entry[i].media$thumbnail) 
+{ 
+thumbUrl = json.feed.entry[i].media$thumbnail.url; 
+sk= thumbUrl.replace("/s72-c/","/s"+ImageSize+"/"); 
+ListImage= "'https://d2zm7enlp2r8lg.cloudfront.net/img/?src=" + sk.replace("?imgmax=800","") + "&wp=1'"; 
+}
+else if (json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null) 
+{ 
+// Support For 3rd Party Images 
+ListImage =  json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]; 
+} 
+else 
+{ 
+ListImage= ""; 
+} 
+
+
+//################### Printing List
+
+ if (json.feed.entry[i].content.$t.includes("OSHL#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSHL#(.*?)#OSHL");
+
+var hotlabel = tmpStr[1];
+
+
+ };
+ 
+ if (json.feed.entry[i].content.$t.includes("OSRATE#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSRATE#(.*?)#OSRATE");
+
+var ratings = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSP#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSP#(.*?)#OSP");
+
+var price = tmpStr[1];
+
+
+ };
+ if (json.feed.entry[i].content.$t.includes("OSCOM#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("OSCOM#(.*?)#OSCOM");
+
+var comparision = tmpStr[1];
+
+
+ };
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitlep20pre= ListTitle;
+ var temptitle = temptitlepre.replace(" ", "");
+ var temptitlep20 = temptitlep20pre.replace(/ /g,"+");;
+ var newStr = ListTitle.substring(0,6);
+  var filtertemp = newStr.replace(":", "");
+  var saves = comparision*1-1*price;
+
+ var fulltitle = ListTitle.substring(0, 30);;
+var listingsection1= "<a href="+ListUrl+" onclick='postopenfunction();' class='showbuyingoptions' target='postopenframe'><li style='display:inline-block;background-color:;width:100%;padding:12px;'><div  style='background-color:;border-radius:19px;'><div  id='mains' class='card ' style='margin-top:13px;background-color:hsla(2, 100%, 100%, 0.54);border-radius:4px;'><div class='card-image' style='z-index:0;position:' ><div   style='animation-delay:0.5s;z-index:999;position:' class='animated bounceIn node"+[i]+"' ><img style='margin-top:-1px;margin-right:-1px;'  src="
++ListImage+
+"> </div></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ListTitle+ 
+"</p></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >" 
++ ratings+ 
+"</p><a target='_blank' href='https://api.whatsapp.com/send?phone=91"+uwano+"&text=I have a question about "+ListTitle+"(&#8377;"+price+")'><img src='https://image.flaticon.com/icons/svg/813/813020.svg' style='position:relative;top:-23px;width:22px;float:right;right:14px;' /></a><a target='_blank' href='https://api.whatsapp.com/send?text=Have a look at : "+ListTitle+" (Details : "+biturl+"/v/o?open%3D"+temptitlep20+")'><img src='https://image.flaticon.com/icons/svg/220/220236.svg' style='position:relative;top:-22px;width:20px;float:right;right:24px;' /></a><p style='color:black;position:relative;left:18px;top:10px;font-family:work sans;font-size:18px;' id='book-name' >&#8377; " 
++ price+ 
+"</p> <del style='color:black;position:relative;right:18px;top:-24px;font-family:work sans;font-size:18px;float:right' id='book-name' >&#8377; " 
++ comparision+ 
+"</del><p style='color:black;position:relative;left:18px;top:0px;font-family:work sans;font-size:14px;' id='book-name' >You save &#8377; " 
++ saves+ 
+"</p><p style='background-color:#213439;position:relative;padding:4px;top:-175px;right:15px;float:right;z-index:;margin-bottom:0px;font-size:12px;font-family:work sans;color:white;border-radius:4px;text-align:right'>"+hotlabel+"</p><br><div  id='xx"+temptitle+"' class=' variants  animated fadeInUp'  style='animation-duration:0.24s;position:fixed;z-index:999;border:0px;display:none;background-color:#343639 ;color:white;height:10%;width:100%;padding:4px 19px;bottom:0px;left:0px;font-size:15px;font-family:poppins;overflow-x:scroll;overflow-y:hidden;white-space: nowrap'><div id='xxcolor"+temptitle+"'></div><button style='border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px' class='mui-btn mui-btn--small mui-btn--primary add-to-cart' id='bod'><ion-icon name='bookmark'></ion-icon> Buy<p id='defpriceonshow' style='display:inline;font-family:roboto mono' >(&#8377;"+price+")</p><input id='defprice' style='display:none' value="+price+"><input id='defname' style='display:none' value='"+ListTitle+"'></div><input id='bookxx2' style='display:none' value='xx"+temptitle+"'><div class='col s6 waves-effect waves-light showbuyingoptions'  style='margin-top:-65.5px;border:0px;display:none;float:right;padding:0px;background-color:#343434;color:white;height:100%;padding:13px 39px;font-size:15px;font-family:poppins'> • Add to Cart</div><hr class='style12' style='margin-bottom:5px;margin-top:30px'><div style='margin-bottom:0px;margin-left:0px;font-size:18px;width:100%;'></div></div></div></li></div>"; 
+
+$(idli).append(listingsection1); 
+
+
+ 
+
+ if (json.feed.entry[i].content.$t.includes("ZZ1#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ1#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("1", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv" value="'+nameonly2+'"></input><p id="varprice" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart1"><ion-icon name="pricetag"></ion-icon> <p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ2#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ2#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("2", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv2" value="'+nameonly2+'"></input><p id="varprice2" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv2" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart2"><ion-icon name="pricetag"></ion-icon> <p id="varname2" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname2" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ3#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ3#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("3", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv3" value="'+nameonly2+'"></input><p id="varprice3" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv3" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart3"><ion-icon name="pricetag"></ion-icon> <p id="varname3" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname3" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ if (json.feed.entry[i].content.$t.includes("ZZ4#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ4#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("4", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv4" value="'+nameonly2+'"></input><p id="varprice4" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv4" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart4"><ion-icon name="pricetag"></ion-icon> <p id="varname4" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname4" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+ 
+ 
+ if (json.feed.entry[i].content.$t.includes("ZZ5#"))
+ {
+ 
+ var temptitlepre = ListTitle.substring(0, 4);;
+ var temptitle = temptitlepre.replace(" ", "");
+ var tempprice = ListTag.substring(0, 4);
+
+  var str = ListConten;
+var tmpStr  = str.match("ZZ5#(.*?)ZZ#");
+
+var newStr = tmpStr[0];
+var replacement1 = newStr.replace("#", "");
+var replacement2 = replacement1.replace("5", "");
+var orgonly = replacement2.replace("#", "");
+
+var tmpStr2  = newStr.match("=(.*?)#");
+var priceonly = tmpStr2[1];
+
+var tmpStr3  = orgonly.match("(.*?)=");
+var nameonly = tmpStr3[1];
+
+var nameonly2 = nameonly.replace("ZZ", "");
+var price2 = priceonly.replace("ZZ", "");
+
+$('#xx'+ temptitle).append('<input style="padding:0px;margin:0px;margin-bottom:0px;display:none" onclick="" class=" " id="varnameiv5" value="'+nameonly2+'"></input><p id="varprice5" style="display:none">'+price2+'</p><input style="padding:0px;margin:0px;margin-bottom:0px;display:none" class="" id="tiv5" value="'+ListTitle+'"></input> <button style="border-radius:100px;display:inline;font-family:Roboto mono;text-align:center;font-size:13.65px" class="mui-btn mui-btn--small mui-btn--primary add-to-cart5"><ion-icon name="pricetag"></ion-icon> <p id="varname5" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+nameonly2+' = &#8377;</p><p id="varname5" style="display:inline;border: 0;background: transparent;width:30px;height:15px;margin:0px;padding:0px;color:white;font-family:roboto mono">'+price2+'</p></button>');
+
+ };
+
+
+} 
+}
+
+var ListBlogLink = "https://"+blogurl+".blogspot.in"; 
+var ListCount = 1000; 
+
+function showorders(){
+var bbb = document.getElementById("open").value;
+oU.open = document.getElementById("open").value;
+LS.set('oUser', oU);
+
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&max-results=100&callback=mbtlist'></"+"script>");
+
+}
+
+
+$(document).keyup(function (e) {
+    if ($("#searchterm:focus") && (e.keyCode === 13)) {
+      searchnow();
+	 
+	
+	
+    }
+ });
+ 
+ 
+function searchnow(){
+oU.open = document.getElementById("searchterm").value;
+LS.set('oUser', oU);
+$(idli).html("");
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q="+oU.open+"+-order&max-results=1000&callback=mbtlist'></"+"script>");
+	setTimeout(function() {fixscroll()}, 500);
+}
+
+function updatefeed(){
+$(idli).html("");
+$(idli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q="+oU.open+"+-order&max-results=1000&callback=mbtlist'></"+"script>");
+setTimeout(function() {fixscroll()}, 500);
+}
+
+
+if (! localStorage.noFirstVisit) {
+    localStorage.noFirstVisit = "1";
+
+	 setTimeout(function(){location.reload()}, 400);
+}
+  
+
+
+</script>
+    
+    
+   <script>
+<!-- ``` -->
+   var url_string = window.location.href;var url = new URL(url_string);
+ if(url.searchParams.get("showfeat")=="true"){
+  document.getElementById("sectionfeatpre").style.display="block";
+   $(sectionfeat).html("");
+$(sectionfeat).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=featured&max-results=1000&callback=mbtlistfeat'></"+"script>");
+
+    };
+	
+	 if(url.searchParams.get("showai")=="true"){
+  document.getElementById("sectionaipre").style.display="block";
+   $(sectionai).html("");
+$(sectionai).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=violety&max-results=1000&callback=mbtlistsectionai'></"+"script>");
+
+    };
+	 if(url.searchParams.get("show1")=="true"){
+  document.getElementById("section1pre").style.display="block";
+   $(section1).html("");
+$(section1).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=shoes&max-results=1000&callback=mbtlistsection1'></"+"script>");
+
+    };
+	 if(url.searchParams.get("show2")=="true"){
+  document.getElementById("section2pre").style.display="block";
+   $(section2).html("");
+$(section2).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=shoes&max-results=1000&callback=mbtlistsection2'></"+"script>");
+
+    };
+	 if(url.searchParams.get("show3")=="true"){
+  document.getElementById("section3pre").style.display="block";
+   $(section3).html("");
+$(section3).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=shoes&max-results=1000&callback=mbtlistsection3'></"+"script>");
+
+    };
+	
+	 if(url.searchParams.get("show4")=="true"){
+  document.getElementById("section4pre").style.display="block";
+   $(section4).html("");
+$(section4).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=shoes&max-results=1000&callback=mbtlistsection4'></"+"script>");
+
+    };
+	 if(url.searchParams.get("showidli")=="true"){
+  document.getElementById("sectionidlipre").style.display="block";
+   $(sectionidli).html("");
+$(sectionidli).append("<script src='"+ListBlogLink+"/feeds/posts/default/?alt=json-in-script&q=&max-results=1000&callback=mbtlist'></"+"script>");
+
+    };
+	
+	
+   </script>
+ 
+ 
+<script>
+
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".submit").click(function(){
+	return false;
+})
+
+
+var currentTime = new Date();
+
+var currentOffset = currentTime.getTimezoneOffset();
+
+var ISTOffset = 330;   // IST offset UTC +5:30 
+
+var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+
+// ISTTime now represents the time in IST coordinates
+
+var hoursIST = ISTTime.getHours();
+var minutesIST = ISTTime.getMinutes();
+
+document.getElementById("time").value = hoursIST + ":" + minutesIST + " Hours";
+
+</script>
+
+<script>
+
+
+ // progressive-image.js
+if (window.addEventListener && window.requestAnimationFrame && document.getElementsByClassName) window.addEventListener('load', function() {
+
+  // start
+  var pItem = document.getElementsByClassName('progressive replace'), timer;
+
+  window.addEventListener('scroll', scroller, false);
+  window.addEventListener('resize', scroller, false);
+  inView();
+
+
+  // throttled scroll/resize
+  function scroller(e) {
+
+    timer = timer || setTimeout(function() {
+      timer = null;
+      requestAnimationFrame(inView);
+    }, 0);
+
+  }
+
+
+  // image in view?
+  function inView() {
+
+    var wT = window.pageYOffset, wB = wT + 600 + window.innerHeight, cRect, pT, pB, p = 0;
+    while (p < pItem.length) {
+
+      cRect = pItem[p].getBoundingClientRect();
+      pT = wT + cRect.top;
+      pB = pT + cRect.height;
+
+      if (wT < pB && wB > pT) {
+        loadFullImage(pItem[p]);
+        pItem[p].classList.remove('replace');
+      }
+      else p++;
+
+    }
+
+  }
+
+
+  // replace with full image
+  function loadFullImage(item) {
+
+    if (!item || !item.href) return;
+
+    // load image
+    var img = new Image();
+    if (item.dataset) {
+      img.srcset = item.dataset.srcset || '';
+      img.sizes = item.dataset.sizes || '';
+    }
+    img.src = item.href;
+    img.className = 'reveal';
+    if (img.complete) addImg();
+    else img.onload = addImg;
+
+    // replace image
+    function addImg() {
+
+      // disable click
+      item.addEventListener('click', function(e) { e.preventDefault(); }, false);
+
+      // add full image
+      item.appendChild(img).addEventListener('animationend', function(e) {
+
+        // remove preview image
+        var pImg = item.querySelector && item.querySelector('img.preview');
+        if (pImg) {
+          e.target.alt = pImg.alt || '';
+          item.removeChild(pImg);
+          e.target.classList.remove('reveal');
+        }
+
+      });
+
+    }
+
+  }
+
+}, false);
+</script>
+
+</div></div>
+</div></div>
+ </body>
+</html>
